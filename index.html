@@ -433,24 +433,41 @@
 
   </section>
 
-  <!-- Cart Box -->
-  <div id="cartBox">
+ 
+<div id="cartBox">
 
-    <h2>🛒 Your Cart</h2>
+  <h2>🛒 Your Cart</h2>
 
-    <div id="cartItems">
-      <p>Your cart is empty.</p>
-    </div>
-
-    <a id="orderBtn"
-       class="order-btn"
-       href="#"
-       target="_blank">
-      Order on WhatsApp
-    </a>
-
+  <div id="cartItems">
+    <p>Your cart is empty.</p>
   </div>
 
+  <h3 style="margin-top:15px;">
+    Total:
+    <span id="totalBill">Rs. 0</span>
+  </h3>
+
+  <input
+    type="text"
+    id="customerName"
+    placeholder="Customer Name"
+    style="width:100%; padding:12px; margin-top:15px; border:1px solid #ddd; border-radius:6px;">
+
+  <input
+    type="tel"
+    id="customerPhone"
+    placeholder="Phone Number"
+    style="width:100%; padding:12px; margin-top:10px; border:1px solid #ddd; border-radius:6px;">
+
+  <button
+    onclick="sendOrder()"
+    style="width:100%; padding:13px; margin-top:15px; background:#25D366; color:white; border:none; border-radius:7px; font-weight:bold; cursor:pointer;">
+
+    📲 Order on WhatsApp
+
+  </button>
+
+</div>
   <footer>
     © 2026 Mughal Paint Hardware & Sanitary Store
   </footer>
