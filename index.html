@@ -82,6 +82,8 @@
       border-radius: 7px;
       font-weight: bold;
       margin: 5px;
+      border: none;
+      cursor: pointer;
     }
 
     .btn.dark {
@@ -137,10 +139,10 @@
     }
 
     .price {
-      font-size: 17px;
+      font-size: 16px;
       font-weight: bold;
       color: #d62828;
-      line-height: 1.7;
+      line-height: 1.8;
       margin-bottom: 15px;
     }
 
@@ -155,6 +157,21 @@
     }
 
     .cart-add:hover {
+      background: #d62828;
+    }
+
+    .category-btn {
+      width: 100%;
+      padding: 12px;
+      background: #111;
+      color: white;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .category-btn:hover {
       background: #d62828;
     }
 
@@ -198,6 +215,7 @@
     }
 
     /* Floating Cart */
+
     #cartButton {
       position: fixed;
       top: 85px;
@@ -231,14 +249,17 @@
       justify-content: center;
     }
 
-    /* Cart Box */
+    /* Cart */
+
     #cartBox {
       display: none;
       position: fixed;
       top: 145px;
       right: 15px;
-      width: 330px;
+      width: 350px;
       max-width: 90%;
+      max-height: 75vh;
+      overflow-y: auto;
       background: white;
       border-radius: 12px;
       padding: 20px;
@@ -268,7 +289,157 @@
       cursor: pointer;
     }
 
+    /* Category Modal */
+
+    #categoryModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 3000;
+      padding: 30px 15px;
+      overflow-y: auto;
+    }
+
+    .modal-content {
+      background: white;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 25px;
+      border-radius: 15px;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .close-btn {
+      background: #d62828;
+      color: white;
+      border: none;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .variant-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
+    .variant {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .variant img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    /* Admin */
+
+    #adminPanel {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #f5f5f5;
+      z-index: 5000;
+      overflow-y: auto;
+      padding: 25px;
+    }
+
+    .admin-container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .admin-box {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .admin-box h2 {
+      margin-bottom: 20px;
+    }
+
+    .admin-input {
+      width: 100%;
+      padding: 12px;
+      margin: 7px 0;
+      border: 1px solid #ccc;
+      border-radius: 7px;
+      font-size: 15px;
+    }
+
+    .admin-btn {
+      padding: 11px 18px;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 5px;
+    }
+
+    .save-btn {
+      background: #25D366;
+      color: white;
+    }
+
+    .delete-btn {
+      background: #d62828;
+      color: white;
+    }
+
+    .logout-btn {
+      background: #111;
+      color: white;
+    }
+
+    .admin-product {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .admin-product img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    #adminLogin {
+      max-width: 400px;
+      margin: 80px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
     @media (max-width: 700px) {
+
       header {
         flex-direction: column;
         gap: 12px;
@@ -287,6 +458,11 @@
         top: 140px;
         right: 5%;
       }
+
+      .admin-product {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
@@ -294,13 +470,17 @@
 <body>
 
   <!-- Floating Cart -->
+
   <div id="cartButton" onclick="openCart()">
     🛒
     <span id="cartCount">0</span>
   </div>
 
+
   <!-- Header -->
+
   <header>
+
     <div class="logo">
       Mughal <span>Paint Hardware</span>
     </div>
@@ -310,14 +490,23 @@
       <a href="#products">Products</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
+      <a href="javascript:openAdmin()">Admin</a>
     </nav>
+
   </header>
 
+
   <!-- Hero -->
+
   <section class="hero" id="home">
+
     <div>
+
       <h1>Mughal Paint Hardware</h1>
-      <p>Quality Paints, Hardware & Sanitary Products</p>
+
+      <p>
+        Quality Paints, Hardware & Sanitary Products
+      </p>
 
       <a class="btn"
          href="https://wa.me/923430573152"
@@ -328,182 +517,55 @@
       <a class="btn dark" href="#products">
         View Products
       </a>
+
     </div>
+
   </section>
 
+
   <!-- Products -->
+
   <section class="section" id="products">
 
-    <h2>Our <span>Products</span></h2>
+    <h2>
+      Our <span>Products</span>
+    </h2>
 
-    <div class="products">
+    <div class="products" id="productCategories"></div>
 
-      <!-- Existing Products -->
-
-      <div class="card">
-        <img src="paint.jpg" alt="Paint Products">
-        <h3>Paint</h3>
-        <p>Quality paints for homes, shops and offices.</p>
-        <button class="cart-add" onclick="addToCart('Paint')">
-          Add to Cart
-        </button>
-      </div>
-
-      <div class="card">
-        <img src="Sanitary.jpg" alt="Sanitary Products">
-        <h3>Sanitary</h3>
-        <p>Sanitary products for bathroom and home needs.</p>
-        <button class="cart-add" onclick="addToCart('Sanitary')">
-          Add to Cart
-        </button>
-      </div>
-
-      <div class="card">
-        <img src="Hardware.jpg" alt="Hardware Products">
-        <h3>Hardware</h3>
-        <p>Quality hardware products and useful tools.</p>
-        <button class="cart-add" onclick="addToCart('Hardware')">
-          Add to Cart
-        </button>
-      </div>
-
-      <div class="card">
-        <img src="Brushes.jpg" alt="Brushes">
-        <h3>Brushes</h3>
-        <p>Quality brushes for painting and finishing work.</p>
-        <button class="cart-add" onclick="addToCart('Brushes')">
-          Add to Cart
-        </button>
-      </div>
-
-      <div class="card">
-        <img src="Rollers.jpg" alt="Rollers">
-        <h3>Rollers</h3>
-        <p>Quality paint rollers for smooth painting.</p>
-        <button class="cart-add" onclick="addToCart('Rollers')">
-          Add to Cart
-        </button>
-      </div>
-
-      <div class="card">
-        <img src="Pipes.jpg" alt="Pipes">
-        <h3>Pipes</h3>
-        <p>Quality pipes for plumbing and construction.</p>
-        <button class="cart-add" onclick="addToCart('Pipes')">
-          Add to Cart
-        </button>
-      </div>
-
-
-      <!-- NEW PAINT PRODUCTS -->
-
-      <div class="card">
-        <img src="weather-defender.jpg" alt="Weather Defender">
-        <h3>Weather Defender</h3>
-        <p>Quality exterior paint for strong and durable protection.</p>
-        <div class="price">
-          Gallon: Rs. 4,200<br>
-          Drum: Rs. 15,000
-        </div>
-        <button class="cart-add" onclick="addToCart('Weather Defender')">
-          Add to Cart
-        </button>
-      </div>
-
-
-      <div class="card">
-        <img src="high-gloss-enamel.jpg" alt="Diamond Paints High Gloss Enamel">
-        <h3>High Gloss Enamel</h3>
-        <p>Diamond Paints High Gloss Enamel.</p>
-        <div class="price">
-          Gallon: Rs. 4,200
-        </div>
-        <button class="cart-add" onclick="addToCart('High Gloss Enamel - Rs. 4,200')">
-          Add to Cart
-        </button>
-      </div>
-
-
-      <div class="card">
-        <img src="emulsion.jpg" alt="Emulsion Distemper">
-        <h3>Emulsion / Distemper</h3>
-        <p>Quality emulsion paint for walls and interior surfaces.</p>
-        <div class="price">
-          Quarter: Rs. 600<br>
-          Gallon: Rs. 2,000<br>
-          Drum 14/15L: Rs. 6,500
-        </div>
-        <button class="cart-add" onclick="addToCart('Emulsion / Distemper')">
-          Add to Cart
-        </button>
-      </div>
-
-
-      <div class="card">
-        <img src="thinner.jpg" alt="Thinner">
-        <h3>Thinner</h3>
-        <p>Quality thinner for paint and finishing work.</p>
-        <div class="price">
-          Quarter: Rs. 800<br>
-          Gallon: Rs. 2,850
-        </div>
-        <button class="cart-add" onclick="addToCart('Thinner')">
-          Add to Cart
-        </button>
-      </div>
-
-
-      <div class="card">
-        <img src="metallic-1601.jpg" alt="Metallic Paint 1601">
-        <h3>Metallic Paint 1601</h3>
-        <p>Metallic paint for decorative and finishing work.</p>
-        <div class="price">
-          Quarter: Rs. 1,200<br>
-          Gallon: Rs. 4,400
-        </div>
-        <button class="cart-add" onclick="addToCart('Metallic Paint 1601')">
-          Add to Cart
-        </button>
-      </div>
-
-
-      <div class="card">
-        <img src="durasilk.jpg" alt="Durasilk">
-        <h3>Durasilk</h3>
-        <p>Quality Durasilk paint for smooth and durable finishing.</p>
-        <div class="price">
-          Gallon / Can: Rs. 5,500<br>
-          Quarter: Rs. 2,500<br>
-          1 Liter: Rs. 1,500
-        </div>
-        <button class="cart-add" onclick="addToCart('Durasilk')">
-          Add to Cart
-        </button>
-      </div>
-
-    </div>
   </section>
 
 
   <!-- About -->
+
   <section class="section about" id="about">
-    <h2>About <span>Us</span></h2>
+
+    <h2>
+      About <span>Us</span>
+    </h2>
 
     <p>
       Mughal Paint Hardware & Sanitary Store provides quality
       paints, hardware, sanitary products and plumbing solutions
       for homes, shops and businesses.
     </p>
+
   </section>
 
 
   <!-- Contact -->
+
   <section class="section contact" id="contact">
 
-    <h2>Contact <span>Us</span></h2>
+    <h2>
+      Contact <span>Us</span>
+    </h2>
 
     <p>📞 Phone: 0343-0573152</p>
-    <p>📍 Address: Jokalian Road, Adda Pahrrianwali</p>
+
+    <p>
+      📍 Address: Jokalian Road, Adda Pahrrianwali
+    </p>
 
     <a class="whatsapp"
        href="https://wa.me/923430573152"
@@ -523,6 +585,7 @@
 
 
   <!-- Cart -->
+
   <div id="cartBox">
 
     <h2>🛒 Your Cart</h2>
@@ -559,6 +622,152 @@
   </div>
 
 
+  <!-- Category Modal -->
+
+  <div id="categoryModal">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+
+        <h2 id="modalTitle">
+          Products
+        </h2>
+
+        <button
+          class="close-btn"
+          onclick="closeCategory()">
+          ×
+        </button>
+
+      </div>
+
+      <div
+        class="variant-list"
+        id="variantList">
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Admin Panel -->
+
+  <div id="adminPanel">
+
+    <div class="admin-container">
+
+      <div id="adminLogin">
+
+        <h2>🔐 Admin Login</h2>
+
+        <p style="margin:15px 0;color:#666;">
+          Mughal Paint Hardware
+        </p>
+
+        <input
+          type="password"
+          id="adminPassword"
+          class="admin-input"
+          placeholder="Admin Password">
+
+        <button
+          class="admin-btn save-btn"
+          onclick="loginAdmin()">
+          Login
+        </button>
+
+        <button
+          class="admin-btn logout-btn"
+          onclick="closeAdmin()">
+          Close
+        </button>
+
+      </div>
+
+
+      <div id="adminDashboard" style="display:none;">
+
+        <div class="admin-box">
+
+          <h2>
+            ⚙️ Product Admin Panel
+          </h2>
+
+          <p style="color:#666;margin-bottom:15px;">
+            یہاں سے آپ نئے products اور varieties شامل کر سکتے ہیں۔
+          </p>
+
+          <input
+            type="text"
+            id="productCategory"
+            class="admin-input"
+            placeholder="Category e.g. Pipes">
+
+          <input
+            type="text"
+            id="productName"
+            class="admin-input"
+            placeholder="Product Name e.g. 3 Inch Pipe">
+
+          <input
+            type="text"
+            id="productSize"
+            class="admin-input"
+            placeholder="Size e.g. 3 Inch / Gallon / Quarter">
+
+          <input
+            type="number"
+            id="productPrice"
+            class="admin-input"
+            placeholder="Price">
+
+          <input
+            type="text"
+            id="productImage"
+            class="admin-input"
+            placeholder="Image file name or image URL">
+
+          <button
+            class="admin-btn save-btn"
+            onclick="addProduct()">
+            ➕ Add Product
+          </button>
+
+        </div>
+
+
+        <div class="admin-box">
+
+          <h2>
+            📦 Current Products
+          </h2>
+
+          <div id="adminProductList"></div>
+
+        </div>
+
+
+        <button
+          class="admin-btn logout-btn"
+          onclick="logoutAdmin()">
+          🔒 Logout
+        </button>
+
+        <button
+          class="admin-btn delete-btn"
+          onclick="closeAdmin()">
+          ✕ Close Admin
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
   <footer>
     ©️ 2026 Mughal Paint Hardware & Sanitary Store
   </footer>
@@ -566,55 +775,540 @@
 
   <script>
 
+    /*
+      ADMIN PASSWORD
+      بعد میں اسے تبدیل کر سکتے ہیں۔
+    */
+
+    const ADMIN_PASSWORD = "12345";
+
+
+    /*
+      Default Products
+    */
+
+    let products = JSON.parse(
+      localStorage.getItem("mughalProducts")
+    ) || [
+
+      {
+        category: "Paint",
+        name: "Paint",
+        size: "",
+        price: 0,
+        image: "paint.jpg"
+      },
+
+      {
+        category: "Sanitary",
+        name: "Sanitary",
+        size: "",
+        price: 0,
+        image: "Sanitary.jpg"
+      },
+
+      {
+        category: "Hardware",
+        name: "Hardware",
+        size: "",
+        price: 0,
+        image: "Hardware.jpg"
+      },
+
+      {
+        category: "Brushes",
+        name: "Brushes",
+        size: "",
+        price: 0,
+        image: "Brushes.jpg"
+      },
+
+      {
+        category: "Rollers",
+        name: "Rollers",
+        size: "",
+        price: 0,
+        image: "Rollers.jpg"
+      },
+
+      {
+        category: "Pipes",
+        name: "Pipes",
+        size: "",
+        price: 0,
+        image: "Pipes.jpg"
+      },
+
+      {
+        category: "Weather Defender",
+        name: "Weather Defender",
+        size: "Gallon",
+        price: 4200,
+        image: "weather-defender.jpg"
+      },
+
+      {
+        category: "Weather Defender",
+        name: "Weather Defender",
+        size: "Drum",
+        price: 15000,
+        image: "weather-defender.jpg"
+      },
+
+      {
+        category: "High Gloss Enamel",
+        name: "Diamond Paints High Gloss Enamel",
+        size: "Gallon",
+        price: 4200,
+        image: "high-gloss-enamel.jpg"
+      },
+
+      {
+        category: "Emulsion",
+        name: "Emulsion / Distemper",
+        size: "Quarter",
+        price: 600,
+        image: "emulsion.jpg"
+      },
+
+      {
+        category: "Emulsion",
+        name: "Emulsion / Distemper",
+        size: "Gallon",
+        price: 2000,
+        image: "emulsion.jpg"
+      },
+
+      {
+        category: "Emulsion",
+        name: "Emulsion / Distemper",
+        size: "Drum 14/15L",
+        price: 6500,
+        image: "emulsion.jpg"
+      },
+
+      {
+        category: "Thinner",
+        name: "Thinner",
+        size: "Quarter",
+        price: 800,
+        image: "thinner.jpg"
+      },
+
+      {
+        category: "Thinner",
+        name: "Thinner",
+        size: "Gallon",
+        price: 2850,
+        image: "thinner.jpg"
+      },
+
+      {
+        category: "Metallic Paint",
+        name: "Metallic Paint 1601",
+        size: "Quarter",
+        price: 1200,
+        image: "metallic-1601.jpg"
+      },
+
+      {
+        category: "Metallic Paint",
+        name: "Metallic Paint 1601",
+        size: "Gallon",
+        price: 4400,
+        image: "metallic-1601.jpg"
+      },
+
+      {
+        category: "Durasilk",
+        name: "Durasilk",
+        size: "Gallon / Can",
+        price: 5500,
+        image: "durasilk.jpg"
+      },
+
+      {
+        category: "Durasilk",
+        name: "Durasilk",
+        size: "Quarter",
+        price: 2500,
+        image: "durasilk.jpg"
+      },
+
+      {
+        category: "Durasilk",
+        name: "Durasilk",
+        size: "1 Liter",
+        price: 1500,
+        image: "durasilk.jpg"
+      }
+
+    ];
+
+
     let cart = [];
 
-    function addToCart(product) {
-      cart.push(product);
-      updateCart();
 
-      alert(product + " added to cart!");
+    /*
+      Save Products
+    */
+
+    function saveProducts() {
+
+      localStorage.setItem(
+        "mughalProducts",
+        JSON.stringify(products)
+      );
+
     }
 
 
+    /*
+      Show Categories
+    */
+
+    function renderCategories() {
+
+      const container =
+        document.getElementById("productCategories");
+
+      container.innerHTML = "";
+
+      const categories = [];
+
+      products.forEach(function(product) {
+
+        if (!categories.includes(product.category)) {
+
+          categories.push(product.category);
+
+        }
+
+      });
+
+
+      categories.forEach(function(category) {
+
+        const categoryProducts =
+          products.filter(function(product) {
+
+            return product.category === category;
+
+          });
+
+
+        const firstProduct =
+          categoryProducts[0];
+
+
+        const card =
+          document.createElement("div");
+
+        card.className = "card";
+
+
+        card.innerHTML = `
+
+          <img
+            src="${firstProduct.image}"
+            alt="${category}"
+            onerror="this.src='paint.jpg'">
+
+          <h3>
+            ${category}
+          </h3>
+
+          <p>
+            ${categoryProducts.length}
+            varieties available
+          </p>
+
+          <button
+            class="category-btn"
+            onclick="openCategory('${escapeText(category)}')">
+
+            View ${category}
+
+          </button>
+
+        `;
+
+
+        container.appendChild(card);
+
+      });
+
+    }
+
+
+    /*
+      Open Category
+    */
+
+    function openCategory(category) {
+
+      const modal =
+        document.getElementById("categoryModal");
+
+      const title =
+        document.getElementById("modalTitle");
+
+      const list =
+        document.getElementById("variantList");
+
+
+      title.textContent = category;
+
+      list.innerHTML = "";
+
+
+      const items =
+        products.filter(function(product) {
+
+          return product.category === category;
+
+        });
+
+
+      items.forEach(function(product, index) {
+
+        const div =
+          document.createElement("div");
+
+        div.className = "variant";
+
+
+        let priceText =
+          product.price > 0
+          ? "Rs. " + Number(product.price).toLocaleString()
+          : "Price on request";
+
+
+        div.innerHTML = `
+
+          <img
+            src="${product.image}"
+            alt="${product.name}"
+            onerror="this.src='paint.jpg'">
+
+          <h3>
+            ${product.name}
+          </h3>
+
+          ${
+            product.size
+            ? `<p style="margin:8px 0;color:#666;">
+                Size: ${product.size}
+              </p>`
+            : ""
+          }
+
+          <div class="price">
+            ${priceText}
+          </div>
+
+          ${
+            product.price > 0
+            ? `<button
+                class="cart-add"
+                onclick="addProductToCart(${getProductIndex(product)})">
+                Add to Cart
+              </button>`
+            : ""
+          }
+
+        `;
+
+
+        list.appendChild(div);
+
+      });
+
+
+      modal.style.display = "block";
+
+    }
+
+
+    /*
+      Close Category
+    */
+
+    function closeCategory() {
+
+      document.getElementById(
+        "categoryModal"
+      ).style.display = "none";
+
+    }
+
+
+    /*
+      Get Product Index
+    */
+
+    function getProductIndex(product) {
+
+      return products.indexOf(product);
+
+    }
+
+
+    /*
+      Escape text
+    */
+
+    function escapeText(text) {
+
+      return text
+        .replace(/\\/g, "\\\\")
+        .replace(/'/g, "\\'");
+
+    }
+
+
+    /*
+      Add Product To Cart
+    */
+
+    function addProductToCart(index) {
+
+      const product =
+        products[index];
+
+
+      cart.push(product);
+
+      updateCart();
+
+
+      alert(
+        product.name +
+        (product.size
+          ? " - " + product.size
+          : "") +
+        " added to cart!"
+      );
+
+    }
+
+
+    /*
+      Old Categories Cart
+    */
+
+    function addToCart(product) {
+
+      cart.push({
+
+        name: product,
+        size: "",
+        price: 0
+
+      });
+
+      updateCart();
+
+    }
+
+
+    /*
+      Update Cart
+    */
+
     function updateCart() {
 
-      document.getElementById("cartCount").textContent = cart.length;
+      document.getElementById(
+        "cartCount"
+      ).textContent = cart.length;
 
-      const cartItems = document.getElementById("cartItems");
+
+      const cartItems =
+        document.getElementById("cartItems");
+
 
       if (cart.length === 0) {
 
-        cartItems.innerHTML = "<p>Your cart is empty.</p>";
+        cartItems.innerHTML =
+          "<p>Your cart is empty.</p>";
 
-        document.getElementById("totalBill").textContent = "Rs. 0";
+        document.getElementById(
+          "totalBill"
+        ).textContent = "Rs. 0";
 
         return;
+
       }
 
 
       cartItems.innerHTML = "";
 
+
+      let total = 0;
+
+
       cart.forEach(function(product, index) {
 
-        const item = document.createElement("div");
+        total += Number(product.price) || 0;
+
+
+        const item =
+          document.createElement("div");
 
         item.className = "cart-item";
 
-        item.innerHTML =
-          "<span>" + product + "</span>" +
-          "<button class='remove' onclick='removeFromCart(" +
-          index + ")'>Remove</button>";
+
+        item.innerHTML = `
+
+          <span>
+
+            ${product.name}
+
+            ${
+              product.size
+              ? "<br><small>" +
+                product.size +
+                "</small>"
+              : ""
+            }
+
+            ${
+              product.price > 0
+              ? "<br><b>Rs. " +
+                Number(product.price).toLocaleString() +
+                "</b>"
+              : ""
+            }
+
+          </span>
+
+          <button
+            class="remove"
+            onclick="removeFromCart(${index})">
+
+            Remove
+
+          </button>
+
+        `;
+
 
         cartItems.appendChild(item);
 
       });
 
 
-      document.getElementById("totalBill").textContent =
-        "See prices above";
+      document.getElementById(
+        "totalBill"
+      ).textContent =
+        "Rs. " + total.toLocaleString();
 
     }
 
+
+    /*
+      Remove Cart
+    */
 
     function removeFromCart(index) {
 
@@ -625,9 +1319,15 @@
     }
 
 
+    /*
+      Open Cart
+    */
+
     function openCart() {
 
-      const box = document.getElementById("cartBox");
+      const box =
+        document.getElementById("cartBox");
+
 
       if (box.style.display === "block") {
 
@@ -642,6 +1342,10 @@
     }
 
 
+    /*
+      Send WhatsApp Order
+    */
+
     function sendOrder() {
 
       if (cart.length === 0) {
@@ -654,10 +1358,17 @@
 
 
       const name =
-        document.getElementById("customerName").value.trim();
+        document
+          .getElementById("customerName")
+          .value
+          .trim();
+
 
       const phone =
-        document.getElementById("customerPhone").value.trim();
+        document
+          .getElementById("customerPhone")
+          .value
+          .trim();
 
 
       let message =
@@ -687,23 +1398,372 @@
       message += "%0AProducts:%0A";
 
 
+      let total = 0;
+
+
       cart.forEach(function(product, index) {
+
+        const price =
+          Number(product.price) || 0;
+
+
+        total += price;
+
 
         message +=
           (index + 1) +
           ". " +
-          encodeURIComponent(product) +
-          "%0A";
+          encodeURIComponent(product.name);
+
+
+        if (product.size) {
+
+          message +=
+            " - " +
+            encodeURIComponent(product.size);
+
+        }
+
+
+        if (price > 0) {
+
+          message +=
+            " - Rs. " +
+            price;
+
+        }
+
+
+        message += "%0A";
 
       });
 
 
+      message +=
+        "%0ATotal: Rs. " +
+        total;
+
+
       window.open(
-        "https://wa.me/923430573152?text=" + message,
+        "https://wa.me/923430573152?text=" +
+        message,
         "_blank"
       );
 
     }
+
+
+    /*
+      ADMIN OPEN
+    */
+
+    function openAdmin() {
+
+      document.getElementById(
+        "adminPanel"
+      ).style.display = "block";
+
+      document.getElementById(
+        "adminLogin"
+      ).style.display = "block";
+
+      document.getElementById(
+        "adminDashboard"
+      ).style.display = "none";
+
+    }
+
+
+    /*
+      ADMIN CLOSE
+    */
+
+    function closeAdmin() {
+
+      document.getElementById(
+        "adminPanel"
+      ).style.display = "none";
+
+    }
+
+
+    /*
+      ADMIN LOGIN
+    */
+
+    function loginAdmin() {
+
+      const password =
+        document
+          .getElementById("adminPassword")
+          .value;
+
+
+      if (password === ADMIN_PASSWORD) {
+
+        document.getElementById(
+          "adminLogin"
+        ).style.display = "none";
+
+
+        document.getElementById(
+          "adminDashboard"
+        ).style.display = "block";
+
+
+        document.getElementById(
+          "adminPassword"
+        ).value = "";
+
+
+        renderAdminProducts();
+
+      } else {
+
+        alert("Wrong Admin Password!");
+
+      }
+
+    }
+
+
+    /*
+      LOGOUT
+    */
+
+    function logoutAdmin() {
+
+      document.getElementById(
+        "adminDashboard"
+      ).style.display = "none";
+
+
+      document.getElementById(
+        "adminLogin"
+      ).style.display = "block";
+
+    }
+
+
+    /*
+      ADD PRODUCT
+    */
+
+    function addProduct() {
+
+      const category =
+        document
+          .getElementById("productCategory")
+          .value
+          .trim();
+
+
+      const name =
+        document
+          .getElementById("productName")
+          .value
+          .trim();
+
+
+      const size =
+        document
+          .getElementById("productSize")
+          .value
+          .trim();
+
+
+      const price =
+        Number(
+          document
+            .getElementById("productPrice")
+            .value
+        );
+
+
+      const image =
+        document
+          .getElementById("productImage")
+          .value
+          .trim();
+
+
+      if (!category || !name || !size || !price) {
+
+        alert(
+          "Please fill Category, Product Name, Size and Price."
+        );
+
+        return;
+
+      }
+
+
+      products.push({
+
+        category: category,
+
+        name: name,
+
+        size: size,
+
+        price: price,
+
+        image: image || "paint.jpg"
+
+      });
+
+
+      saveProducts();
+
+      renderCategories();
+
+      renderAdminProducts();
+
+
+      document.getElementById(
+        "productCategory"
+      ).value = "";
+
+
+      document.getElementById(
+        "productName"
+      ).value = "";
+
+
+      document.getElementById(
+        "productSize"
+      ).value = "";
+
+
+      document.getElementById(
+        "productPrice"
+      ).value = "";
+
+
+      document.getElementById(
+        "productImage"
+      ).value = "";
+
+
+      alert(
+        "Product added successfully!"
+      );
+
+    }
+
+
+    /*
+      ADMIN PRODUCT LIST
+    */
+
+    function renderAdminProducts() {
+
+      const list =
+        document.getElementById(
+          "adminProductList"
+        );
+
+
+      list.innerHTML = "";
+
+
+      products.forEach(function(product, index) {
+
+        const div =
+          document.createElement("div");
+
+
+        div.className =
+          "admin-product";
+
+
+        div.innerHTML = `
+
+          <img
+            src="${product.image}"
+            onerror="this.src='paint.jpg'">
+
+          <div style="flex:1;">
+
+            <b>
+              ${product.category}
+            </b>
+
+            <br>
+
+            ${product.name}
+
+            <br>
+
+            <small>
+              ${product.size}
+              — Rs.
+              ${Number(product.price).toLocaleString()}
+            </small>
+
+          </div>
+
+          <button
+            class="admin-btn delete-btn"
+            onclick="deleteProduct(${index})">
+
+            Delete
+
+          </button>
+
+        `;
+
+
+        list.appendChild(div);
+
+      });
+
+    }
+
+
+    /*
+      DELETE PRODUCT
+    */
+
+    function deleteProduct(index) {
+
+      const product =
+        products[index];
+
+
+      const confirmDelete =
+        confirm(
+          "Delete " +
+          product.name +
+          " - " +
+          product.size +
+          "?"
+        );
+
+
+      if (!confirmDelete) {
+
+        return;
+
+      }
+
+
+      products.splice(index, 1);
+
+      saveProducts();
+
+      renderCategories();
+
+      renderAdminProducts();
+
+    }
+
+
+    /*
+      Initial Load
+    */
+
+    renderCategories();
 
   </script>
 
