@@ -146,7 +146,8 @@
       margin-bottom: 15px;
     }
 
-    .cart-add {
+    .cart-add,
+    .category-btn {
       background: #111;
       color: white;
       border: none;
@@ -156,23 +157,13 @@
       font-weight: bold;
     }
 
-    .cart-add:hover {
+    .cart-add:hover,
+    .category-btn:hover {
       background: #d62828;
     }
 
     .category-btn {
       width: 100%;
-      padding: 12px;
-      background: #111;
-      color: white;
-      border: none;
-      border-radius: 7px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .category-btn:hover {
-      background: #d62828;
     }
 
     .about {
@@ -214,7 +205,7 @@
       padding: 20px;
     }
 
-    /* Floating Cart */
+    /* CART */
 
     #cartButton {
       position: fixed;
@@ -249,8 +240,6 @@
       justify-content: center;
     }
 
-    /* Cart */
-
     #cartBox {
       display: none;
       position: fixed;
@@ -265,10 +254,6 @@
       padding: 20px;
       box-shadow: 0 5px 25px rgba(0,0,0,0.25);
       z-index: 1999;
-    }
-
-    #cartBox h2 {
-      margin-bottom: 15px;
     }
 
     .cart-item {
@@ -289,7 +274,7 @@
       cursor: pointer;
     }
 
-    /* Category Modal */
+    /* CATEGORY POPUP */
 
     #categoryModal {
       display: none;
@@ -348,7 +333,7 @@
       margin-bottom: 10px;
     }
 
-    /* Admin */
+    /* ADMIN */
 
     #adminPanel {
       display: none;
@@ -410,6 +395,37 @@
       color: white;
     }
 
+    /* PHOTO UPLOAD */
+
+    .photo-label {
+      display: block;
+      background: #111;
+      color: white;
+      padding: 13px;
+      border-radius: 7px;
+      text-align: center;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    .photo-label:hover {
+      background: #d62828;
+    }
+
+    #productImageFile {
+      display: none;
+    }
+
+    #imagePreview {
+      display: none;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin: 15px auto;
+      border: 2px solid #ddd;
+    }
+
     .admin-product {
       border: 1px solid #ddd;
       border-radius: 10px;
@@ -469,7 +485,7 @@
 
 <body>
 
-  <!-- Floating Cart -->
+  <!-- CART BUTTON -->
 
   <div id="cartButton" onclick="openCart()">
     🛒
@@ -477,7 +493,7 @@
   </div>
 
 
-  <!-- Header -->
+  <!-- HEADER -->
 
   <header>
 
@@ -496,7 +512,7 @@
   </header>
 
 
-  <!-- Hero -->
+  <!-- HERO -->
 
   <section class="hero" id="home">
 
@@ -523,7 +539,7 @@
   </section>
 
 
-  <!-- Products -->
+  <!-- PRODUCTS -->
 
   <section class="section" id="products">
 
@@ -536,7 +552,7 @@
   </section>
 
 
-  <!-- About -->
+  <!-- ABOUT -->
 
   <section class="section about" id="about">
 
@@ -553,7 +569,7 @@
   </section>
 
 
-  <!-- Contact -->
+  <!-- CONTACT -->
 
   <section class="section contact" id="contact">
 
@@ -584,7 +600,7 @@
   </section>
 
 
-  <!-- Cart -->
+  <!-- CART BOX -->
 
   <div id="cartBox">
 
@@ -622,7 +638,7 @@
   </div>
 
 
-  <!-- Category Modal -->
+  <!-- CATEGORY MODAL -->
 
   <div id="categoryModal">
 
@@ -652,11 +668,13 @@
   </div>
 
 
-  <!-- Admin Panel -->
+  <!-- ADMIN PANEL -->
 
   <div id="adminPanel">
 
     <div class="admin-container">
+
+      <!-- LOGIN -->
 
       <div id="adminLogin">
 
@@ -687,6 +705,8 @@
       </div>
 
 
+      <!-- DASHBOARD -->
+
       <div id="adminDashboard" style="display:none;">
 
         <div class="admin-box">
@@ -696,20 +716,23 @@
           </h2>
 
           <p style="color:#666;margin-bottom:15px;">
-            یہاں سے آپ نئے products اور varieties شامل کر سکتے ہیں۔
+            یہاں سے آپ نئے products، varieties، prices اور pictures شامل کر سکتے ہیں۔
           </p>
+
 
           <input
             type="text"
             id="productCategory"
             class="admin-input"
-            placeholder="Category e.g. Pipes">
+            placeholder="Category e.g. Pipes / Metallic Paint">
+
 
           <input
             type="text"
             id="productName"
             class="admin-input"
-            placeholder="Product Name e.g. 3 Inch Pipe">
+            placeholder="Product Name e.g. 3 Inch Pipe / 1602">
+
 
           <input
             type="text"
@@ -717,26 +740,50 @@
             class="admin-input"
             placeholder="Size e.g. 3 Inch / Gallon / Quarter">
 
+
           <input
             type="number"
             id="productPrice"
             class="admin-input"
             placeholder="Price">
 
+
+          <!-- PHOTO BUTTON -->
+
+          <label
+            for="productImageFile"
+            class="photo-label">
+
+            📷 Choose Product Photo
+
+          </label>
+
           <input
-            type="text"
-            id="productImage"
-            class="admin-input"
-            placeholder="Image file name or image URL">
+            type="file"
+            id="productImageFile"
+            accept="image/*"
+            onchange="previewProductImage(event)">
+
+
+          <!-- IMAGE PREVIEW -->
+
+          <img
+            id="imagePreview"
+            alt="Product Preview">
+
 
           <button
             class="admin-btn save-btn"
             onclick="addProduct()">
+
             ➕ Add Product
+
           </button>
 
         </div>
 
+
+        <!-- CURRENT PRODUCTS -->
 
         <div class="admin-box">
 
@@ -752,13 +799,18 @@
         <button
           class="admin-btn logout-btn"
           onclick="logoutAdmin()">
+
           🔒 Logout
+
         </button>
+
 
         <button
           class="admin-btn delete-btn"
           onclick="closeAdmin()">
+
           ✕ Close Admin
+
         </button>
 
       </div>
@@ -775,17 +827,12 @@
 
   <script>
 
-    /*
-      ADMIN PASSWORD
-      بعد میں اسے تبدیل کر سکتے ہیں۔
-    */
+    /* ADMIN PASSWORD */
 
     const ADMIN_PASSWORD = "12345";
 
 
-    /*
-      Default Products
-    */
+    /* PRODUCTS */
 
     let products = JSON.parse(
       localStorage.getItem("mughalProducts")
@@ -948,10 +995,10 @@
 
     let cart = [];
 
+    let selectedImage = "";
 
-    /*
-      Save Products
-    */
+
+    /* SAVE PRODUCTS */
 
     function saveProducts() {
 
@@ -963,24 +1010,83 @@
     }
 
 
-    /*
-      Show Categories
-    */
+    /* PHOTO PREVIEW */
+
+    function previewProductImage(event) {
+
+      const file =
+        event.target.files[0];
+
+      if (!file) {
+        return;
+      }
+
+
+      if (!file.type.startsWith("image/")) {
+
+        alert("Please select an image file.");
+
+        return;
+
+      }
+
+
+      const reader =
+        new FileReader();
+
+
+      reader.onload = function(e) {
+
+        selectedImage =
+          e.target.result;
+
+
+        const preview =
+          document.getElementById("imagePreview");
+
+
+        preview.src =
+          selectedImage;
+
+
+        preview.style.display =
+          "block";
+
+      };
+
+
+      reader.readAsDataURL(file);
+
+    }
+
+
+    /* SHOW CATEGORIES */
 
     function renderCategories() {
 
       const container =
-        document.getElementById("productCategories");
+        document.getElementById(
+          "productCategories"
+        );
+
 
       container.innerHTML = "";
 
+
       const categories = [];
+
 
       products.forEach(function(product) {
 
-        if (!categories.includes(product.category)) {
+        if (
+          !categories.includes(
+            product.category
+          )
+        ) {
 
-          categories.push(product.category);
+          categories.push(
+            product.category
+          );
 
         }
 
@@ -1003,6 +1109,7 @@
 
         const card =
           document.createElement("div");
+
 
         card.className = "card";
 
@@ -1041,23 +1148,26 @@
     }
 
 
-    /*
-      Open Category
-    */
+    /* OPEN CATEGORY */
 
     function openCategory(category) {
 
       const modal =
-        document.getElementById("categoryModal");
+        document.getElementById(
+          "categoryModal"
+        );
 
-      const title =
-        document.getElementById("modalTitle");
+
+      document.getElementById(
+        "modalTitle"
+      ).textContent = category;
+
 
       const list =
-        document.getElementById("variantList");
+        document.getElementById(
+          "variantList"
+        );
 
-
-      title.textContent = category;
 
       list.innerHTML = "";
 
@@ -1070,18 +1180,13 @@
         });
 
 
-      items.forEach(function(product, index) {
+      items.forEach(function(product) {
 
         const div =
           document.createElement("div");
 
+
         div.className = "variant";
-
-
-        let priceText =
-          product.price > 0
-          ? "Rs. " + Number(product.price).toLocaleString()
-          : "Price on request";
 
 
         div.innerHTML = `
@@ -1104,15 +1209,25 @@
           }
 
           <div class="price">
-            ${priceText}
+
+            ${
+              product.price > 0
+              ? "Rs. " +
+                Number(product.price)
+                .toLocaleString()
+              : "Price on request"
+            }
+
           </div>
 
           ${
             product.price > 0
             ? `<button
                 class="cart-add"
-                onclick="addProductToCart(${getProductIndex(product)})">
+                onclick="addProductToCart(${products.indexOf(product)})">
+
                 Add to Cart
+
               </button>`
             : ""
           }
@@ -1125,38 +1240,25 @@
       });
 
 
-      modal.style.display = "block";
+      modal.style.display =
+        "block";
 
     }
 
 
-    /*
-      Close Category
-    */
+    /* CLOSE CATEGORY */
 
     function closeCategory() {
 
       document.getElementById(
         "categoryModal"
-      ).style.display = "none";
+      ).style.display =
+        "none";
 
     }
 
 
-    /*
-      Get Product Index
-    */
-
-    function getProductIndex(product) {
-
-      return products.indexOf(product);
-
-    }
-
-
-    /*
-      Escape text
-    */
+    /* ESCAPE TEXT */
 
     function escapeText(text) {
 
@@ -1167,9 +1269,7 @@
     }
 
 
-    /*
-      Add Product To Cart
-    */
+    /* ADD PRODUCT TO CART */
 
     function addProductToCart(index) {
 
@@ -1179,23 +1279,24 @@
 
       cart.push(product);
 
+
       updateCart();
 
 
       alert(
         product.name +
-        (product.size
+        (
+          product.size
           ? " - " + product.size
-          : "") +
+          : ""
+        ) +
         " added to cart!"
       );
 
     }
 
 
-    /*
-      Old Categories Cart
-    */
+    /* OLD CATEGORY CART */
 
     function addToCart(product) {
 
@@ -1207,24 +1308,26 @@
 
       });
 
+
       updateCart();
 
     }
 
 
-    /*
-      Update Cart
-    */
+    /* UPDATE CART */
 
     function updateCart() {
 
       document.getElementById(
         "cartCount"
-      ).textContent = cart.length;
+      ).textContent =
+        cart.length;
 
 
       const cartItems =
-        document.getElementById("cartItems");
+        document.getElementById(
+          "cartItems"
+        );
 
 
       if (cart.length === 0) {
@@ -1232,9 +1335,12 @@
         cartItems.innerHTML =
           "<p>Your cart is empty.</p>";
 
+
         document.getElementById(
           "totalBill"
-        ).textContent = "Rs. 0";
+        ).textContent =
+          "Rs. 0";
+
 
         return;
 
@@ -1249,13 +1355,16 @@
 
       cart.forEach(function(product, index) {
 
-        total += Number(product.price) || 0;
+        total +=
+          Number(product.price) || 0;
 
 
         const item =
           document.createElement("div");
 
-        item.className = "cart-item";
+
+        item.className =
+          "cart-item";
 
 
         item.innerHTML = `
@@ -1275,12 +1384,14 @@
             ${
               product.price > 0
               ? "<br><b>Rs. " +
-                Number(product.price).toLocaleString() +
+                Number(product.price)
+                .toLocaleString() +
                 "</b>"
               : ""
             }
 
           </span>
+
 
           <button
             class="remove"
@@ -1301,14 +1412,13 @@
       document.getElementById(
         "totalBill"
       ).textContent =
-        "Rs. " + total.toLocaleString();
+        "Rs. " +
+        total.toLocaleString();
 
     }
 
 
-    /*
-      Remove Cart
-    */
+    /* REMOVE */
 
     function removeFromCart(index) {
 
@@ -1319,38 +1429,33 @@
     }
 
 
-    /*
-      Open Cart
-    */
+    /* OPEN CART */
 
     function openCart() {
 
       const box =
-        document.getElementById("cartBox");
+        document.getElementById(
+          "cartBox"
+        );
 
 
-      if (box.style.display === "block") {
-
-        box.style.display = "none";
-
-      } else {
-
-        box.style.display = "block";
-
-      }
+      box.style.display =
+        box.style.display === "block"
+        ? "none"
+        : "block";
 
     }
 
 
-    /*
-      Send WhatsApp Order
-    */
+    /* WHATSAPP ORDER */
 
     function sendOrder() {
 
       if (cart.length === 0) {
 
-        alert("Your cart is empty!");
+        alert(
+          "Your cart is empty!"
+        );
 
         return;
 
@@ -1358,17 +1463,15 @@
 
 
       const name =
-        document
-          .getElementById("customerName")
-          .value
-          .trim();
+        document.getElementById(
+          "customerName"
+        ).value.trim();
 
 
       const phone =
-        document
-          .getElementById("customerPhone")
-          .value
-          .trim();
+        document.getElementById(
+          "customerPhone"
+        ).value.trim();
 
 
       let message =
@@ -1395,7 +1498,8 @@
       }
 
 
-      message += "%0AProducts:%0A";
+      message +=
+        "%0AProducts:%0A";
 
 
       let total = 0;
@@ -1413,14 +1517,18 @@
         message +=
           (index + 1) +
           ". " +
-          encodeURIComponent(product.name);
+          encodeURIComponent(
+            product.name
+          );
 
 
         if (product.size) {
 
           message +=
             " - " +
-            encodeURIComponent(product.size);
+            encodeURIComponent(
+              product.size
+            );
 
         }
 
@@ -1453,62 +1561,67 @@
     }
 
 
-    /*
-      ADMIN OPEN
-    */
+    /* ADMIN OPEN */
 
     function openAdmin() {
 
       document.getElementById(
         "adminPanel"
-      ).style.display = "block";
+      ).style.display =
+        "block";
+
 
       document.getElementById(
         "adminLogin"
-      ).style.display = "block";
+      ).style.display =
+        "block";
+
 
       document.getElementById(
         "adminDashboard"
-      ).style.display = "none";
+      ).style.display =
+        "none";
 
     }
 
 
-    /*
-      ADMIN CLOSE
-    */
+    /* ADMIN CLOSE */
 
     function closeAdmin() {
 
       document.getElementById(
         "adminPanel"
-      ).style.display = "none";
+      ).style.display =
+        "none";
 
     }
 
 
-    /*
-      ADMIN LOGIN
-    */
+    /* LOGIN */
 
     function loginAdmin() {
 
       const password =
-        document
-          .getElementById("adminPassword")
-          .value;
+        document.getElementById(
+          "adminPassword"
+        ).value;
 
 
-      if (password === ADMIN_PASSWORD) {
+      if (
+        password ===
+        ADMIN_PASSWORD
+      ) {
 
         document.getElementById(
           "adminLogin"
-        ).style.display = "none";
+        ).style.display =
+          "none";
 
 
         document.getElementById(
           "adminDashboard"
-        ).style.display = "block";
+        ).style.display =
+          "block";
 
 
         document.getElementById(
@@ -1520,74 +1633,69 @@
 
       } else {
 
-        alert("Wrong Admin Password!");
+        alert(
+          "Wrong Admin Password!"
+        );
 
       }
 
     }
 
 
-    /*
-      LOGOUT
-    */
+    /* LOGOUT */
 
     function logoutAdmin() {
 
       document.getElementById(
         "adminDashboard"
-      ).style.display = "none";
+      ).style.display =
+        "none";
 
 
       document.getElementById(
         "adminLogin"
-      ).style.display = "block";
+      ).style.display =
+        "block";
 
     }
 
 
-    /*
-      ADD PRODUCT
-    */
+    /* ADD PRODUCT */
 
     function addProduct() {
 
       const category =
-        document
-          .getElementById("productCategory")
-          .value
-          .trim();
+        document.getElementById(
+          "productCategory"
+        ).value.trim();
 
 
       const name =
-        document
-          .getElementById("productName")
-          .value
-          .trim();
+        document.getElementById(
+          "productName"
+        ).value.trim();
 
 
       const size =
-        document
-          .getElementById("productSize")
-          .value
-          .trim();
+        document.getElementById(
+          "productSize"
+        ).value.trim();
 
 
       const price =
         Number(
-          document
-            .getElementById("productPrice")
-            .value
+          document.getElementById(
+            "productPrice"
+          ).value
         );
 
 
-      const image =
-        document
-          .getElementById("productImage")
-          .value
-          .trim();
-
-
-      if (!category || !name || !size || !price) {
+      if (
+        !category ||
+        !name ||
+        !size ||
+        !price
+      ) {
 
         alert(
           "Please fill Category, Product Name, Size and Price."
@@ -1608,12 +1716,15 @@
 
         price: price,
 
-        image: image || "paint.jpg"
+        image:
+          selectedImage ||
+          "paint.jpg"
 
       });
 
 
       saveProducts();
+
 
       renderCategories();
 
@@ -1641,8 +1752,17 @@
 
 
       document.getElementById(
-        "productImage"
+        "productImageFile"
       ).value = "";
+
+
+      selectedImage = "";
+
+
+      document.getElementById(
+        "imagePreview"
+      ).style.display =
+        "none";
 
 
       alert(
@@ -1652,9 +1772,7 @@
     }
 
 
-    /*
-      ADMIN PRODUCT LIST
-    */
+    /* ADMIN PRODUCTS */
 
     function renderAdminProducts() {
 
@@ -1683,6 +1801,7 @@
             src="${product.image}"
             onerror="this.src='paint.jpg'">
 
+
           <div style="flex:1;">
 
             <b>
@@ -1698,10 +1817,12 @@
             <small>
               ${product.size}
               — Rs.
-              ${Number(product.price).toLocaleString()}
+              ${Number(product.price)
+                .toLocaleString()}
             </small>
 
           </div>
+
 
           <button
             class="admin-btn delete-btn"
@@ -1721,9 +1842,7 @@
     }
 
 
-    /*
-      DELETE PRODUCT
-    */
+    /* DELETE PRODUCT */
 
     function deleteProduct(index) {
 
@@ -1731,26 +1850,29 @@
         products[index];
 
 
-      const confirmDelete =
-        confirm(
+      if (
+        !confirm(
           "Delete " +
           product.name +
           " - " +
           product.size +
           "?"
-        );
-
-
-      if (!confirmDelete) {
+        )
+      ) {
 
         return;
 
       }
 
 
-      products.splice(index, 1);
+      products.splice(
+        index,
+        1
+      );
+
 
       saveProducts();
+
 
       renderCategories();
 
@@ -1759,9 +1881,7 @@
     }
 
 
-    /*
-      Initial Load
-    */
+    /* INITIAL LOAD */
 
     renderCategories();
 
