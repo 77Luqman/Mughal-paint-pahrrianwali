@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Mughal Paint </title>
+  <title>Mughal Paint Hardware</title>
 
   <style>
     * {
@@ -14,96 +14,135 @@
       font-family: Arial, sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background: #f5f5f5;
       color: #222;
     }
 
+    /* Header */
     header {
       background: #111;
       color: white;
-      padding: 20px;
-      text-align: center;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    header h1 {
-      font-size: 30px;
-      margin-bottom: 8px;
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
     }
 
-    header p {
-      font-size: 15px;
-      color: #ddd;
-    }
-
-    nav {
-      background: #222;
-      padding: 12px;
-      text-align: center;
+    .logo span {
+      color: #f5c542;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 12px;
+      margin-left: 20px;
       font-size: 15px;
     }
 
-    .hero {
-      background: linear-gradient(135deg, #333, #777);
-      color: white;
-      text-align: center;
-      padding: 80px 20px;
+    nav a:hover {
+      color: #f5c542;
     }
 
-    .hero h2 {
-      font-size: 40px;
+    /* Hero */
+    .hero {
+      min-height: 75vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      background:
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+        linear-gradient(135deg, #d62828, #f77f00, #fcbf49);
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 48px;
       margin-bottom: 15px;
     }
 
+    .hero h1 span {
+      color: #f5c542;
+    }
+
     .hero p {
-      font-size: 18px;
-      margin-bottom: 25px;
+      font-size: 19px;
+      margin-bottom: 28px;
     }
 
     .btn {
       display: inline-block;
-      background: white;
-      color: #222;
-      padding: 13px 25px;
-      border-radius: 6px;
+      padding: 14px 25px;
+      background: #25D366;
+      color: white;
       text-decoration: none;
+      border-radius: 7px;
       font-weight: bold;
+      margin: 5px;
     }
 
+    .btn.dark {
+      background: #111;
+    }
+
+    /* Sections */
     .section {
-      padding: 50px 20px;
-      max-width: 1100px;
-      margin: auto;
+      padding: 65px 6%;
       text-align: center;
     }
 
     .section h2 {
-      font-size: 30px;
-      margin-bottom: 30px;
+      font-size: 32px;
+      margin-bottom: 35px;
     }
 
+    .section h2 span {
+      color: #d62828;
+    }
+
+    /* Products */
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+      gap: 22px;
+      max-width: 1100px;
+      margin: auto;
     }
 
     .card {
       background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+      padding: 30px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .icon {
+      font-size: 45px;
+      margin-bottom: 15px;
     }
 
     .card h3 {
-      margin-bottom: 12px;
       font-size: 21px;
+      margin-bottom: 10px;
     }
 
     .card p {
@@ -111,41 +150,72 @@
       line-height: 1.6;
     }
 
+    /* About */
     .about {
       background: white;
     }
 
+    .about p {
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.8;
+      color: #555;
+      font-size: 17px;
+    }
+
+    /* Contact */
     .contact {
-      background: #222;
+      background: #181818;
       color: white;
     }
 
     .contact p {
-      margin: 10px 0;
+      margin: 13px 0;
       font-size: 17px;
     }
 
-    .contact a {
+    .whatsapp {
+      background: #25D366;
+      display: inline-block;
       color: white;
+      padding: 15px 28px;
+      margin-top: 20px;
+      border-radius: 7px;
       text-decoration: none;
+      font-weight: bold;
     }
 
+    /* Footer */
     footer {
-      background: #111;
+      background: #000;
       color: #aaa;
       text-align: center;
-      padding: 18px;
+      padding: 20px;
       font-size: 14px;
     }
 
-    @media (max-width: 600px) {
-      .hero h2 {
-        font-size: 30px;
+    /* Mobile */
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        gap: 12px;
       }
 
       nav a {
         margin: 0 6px;
         font-size: 13px;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 50px 20px;
       }
     }
   </style>
@@ -153,76 +223,117 @@
 
 <body>
 
+  <!-- Header -->
   <header>
-    <h1>Mughal Paint</h1>
-    <p>Quality Paints & Colour Solutions</p>
+    <div class="logo">
+      Mughal <span>Paint Hardware</span>
+    </div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#products">Products</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
+  <!-- Hero -->
   <section class="hero" id="home">
-    <h2>Give Your Home a New Look</h2>
-    <p>Premium quality paints for your home, shop and office.</p>
-    <a href="#contact" class="btn">Contact Us</a>
+    <div>
+      <h1>Welcome to <span>Mughal Paint Hardware</span></h1>
+
+      <p>
+        Quality Paints, Hardware & Colour Solutions
+      </p>
+
+      <a class="btn"
+         href="https://wa.me/923430573152"
+         target="_blank">
+        💬 WhatsApp Us
+      </a>
+
+      <a class="btn dark" href="#products">
+        View Products
+      </a>
+    </div>
   </section>
 
+  <!-- Products -->
   <section class="section" id="products">
-    <h2>Our Products</h2>
+
+    <h2>Our <span>Products</span></h2>
 
     <div class="products">
 
       <div class="card">
+        <div class="icon">🎨</div>
         <h3>Wall Paint</h3>
-        <p>Beautiful and durable colours for your walls.</p>
+        <p>
+          Beautiful and durable paints for your home and business walls.
+        </p>
       </div>
 
       <div class="card">
+        <div class="icon">🏠</div>
         <h3>Exterior Paint</h3>
-        <p>Strong protection and attractive colours for outside walls.</p>
+        <p>
+          Strong and long-lasting paints for exterior walls.
+        </p>
       </div>
 
       <div class="card">
+        <div class="icon">🖌️</div>
         <h3>Interior Paint</h3>
-        <p>Premium finish paints for a beautiful interior.</p>
+        <p>
+          Premium finish colours for attractive interiors.
+        </p>
       </div>
 
       <div class="card">
-        <h3>Wood & Metal Paint</h3>
-        <p>Quality paints for doors, windows, furniture and metal surfaces.</p>
+        <div class="icon">🔨</div>
+        <h3>Hardware</h3>
+        <p>
+          Hardware products and useful tools for construction and renovation.
+        </p>
       </div>
 
     </div>
+
   </section>
 
+  <!-- About -->
   <section class="section about" id="about">
-    <h2>About Us</h2>
+
+    <h2>About <span>Us</span></h2>
+
     <p>
-      Mughal Paint provides quality paint products and
-      colour solutions for homes, offices and businesses.
-      Our goal is to provide quality products with reliable service.
+      Mughal Paint Hardware provides quality paints, hardware products
+      and colour solutions for homes, shops, offices and businesses.
+      Our aim is to provide reliable products and friendly customer service.
     </p>
+
   </section>
 
+  <!-- Contact -->
   <section class="section contact" id="contact">
-    <h2>Contact Us</h2>
 
-    <p>📞 Phone: 0300-0000000</p>
-    <p>📍 Location: Pakistan</p>
-    <p>
-      💬 WhatsApp:
-      <a href="https://wa.me/923000000000">
-        Chat on WhatsApp
-      </a>
-    </p>
+    <h2>Contact <span>Us</span></h2>
+
+    <p>📞 Phone: 0343-0573152</p>
+
+    <p>💬 WhatsApp: 0343-0573152</p>
+
+    <a class="whatsapp"
+       href="https://wa.me/923430573152"
+       target="_blank">
+      Chat With Us on WhatsApp
+    </a>
+
   </section>
 
+  <!-- Footer -->
   <footer>
-    © 2026 Mughal Paint. All Rights Reserved.
+    © 2026 Mughal Paint Hardware — All Rights Reserved.
   </footer>
 
 </body>
