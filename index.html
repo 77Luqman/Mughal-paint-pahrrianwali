@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Mughal Paint Hardware</title>
+  <title>Mughal Paint Hardware & Sanitary Store</title>
 
   <style>
     * {
@@ -22,11 +22,7 @@
       background: #f5f5f5;
       color: #222;
     }
-}
-<div id="cartButton" onclick="openCart()">
-  🛒 <span id="cartCount">0</span>
-</div>
-    /* Header */
+
     header {
       background: #111;
       color: white;
@@ -40,7 +36,7 @@
     }
 
     .logo {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: bold;
     }
 
@@ -51,45 +47,34 @@
     nav a {
       color: white;
       text-decoration: none;
-      margin-left: 20px;
-      font-size: 15px;
+      margin-left: 18px;
+      font-size: 14px;
     }
 
-    nav a:hover {
-      color: #f5c542;
-    }
-
-    /* Hero */
     .hero {
-      min-height: 75vh;
+      min-height: 72vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 40px 20px;
-      background:
-        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-        linear-gradient(135deg, #d62828, #f77f00, #fcbf49);
+      padding: 50px 20px;
+      background: linear-gradient(135deg, #d62828, #f77f00, #fcbf49);
       color: white;
     }
 
     .hero h1 {
-      font-size: 48px;
+      font-size: 45px;
       margin-bottom: 15px;
     }
 
-    .hero h1 span {
-      color: #f5c542;
-    }
-
     .hero p {
-      font-size: 19px;
-      margin-bottom: 28px;
+      font-size: 18px;
+      margin-bottom: 25px;
     }
 
     .btn {
       display: inline-block;
-      padding: 14px 25px;
+      padding: 13px 22px;
       background: #25D366;
       color: white;
       text-decoration: none;
@@ -102,14 +87,13 @@
       background: #111;
     }
 
-    /* Sections */
     .section {
-      padding: 65px 6%;
+      padding: 60px 6%;
       text-align: center;
     }
 
     .section h2 {
-      font-size: 32px;
+      font-size: 31px;
       margin-bottom: 35px;
     }
 
@@ -117,10 +101,9 @@
       color: #d62828;
     }
 
-    /* Products */
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 22px;
       max-width: 1100px;
       margin: auto;
@@ -128,32 +111,44 @@
 
     .card {
       background: white;
-      padding: 30px 20px;
+      padding: 20px;
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: 0.3s;
     }
 
-    .card:hover {
-      transform: translateY(-6px);
-    }
-
-    .icon {
-      font-size: 45px;
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
       margin-bottom: 15px;
     }
 
     .card h3 {
-      font-size: 21px;
       margin-bottom: 10px;
+      font-size: 20px;
     }
 
     .card p {
       color: #666;
-      line-height: 1.6;
+      line-height: 1.5;
+      margin-bottom: 15px;
     }
 
-    /* About */
+    .cart-add {
+      background: #111;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .cart-add:hover {
+      background: #d62828;
+    }
+
     .about {
       background: white;
     }
@@ -163,41 +158,119 @@
       margin: auto;
       line-height: 1.8;
       color: #555;
-      font-size: 17px;
     }
 
-    /* Contact */
     .contact {
       background: #181818;
       color: white;
     }
 
     .contact p {
-      margin: 13px 0;
+      margin: 12px 0;
       font-size: 17px;
     }
 
     .whatsapp {
-      background: #25D366;
       display: inline-block;
+      background: #25D366;
       color: white;
-      padding: 15px 28px;
-      margin-top: 20px;
+      padding: 14px 25px;
       border-radius: 7px;
       text-decoration: none;
       font-weight: bold;
+      margin-top: 15px;
     }
 
-    /* Footer */
     footer {
       background: #000;
       color: #aaa;
       text-align: center;
       padding: 20px;
-      font-size: 14px;
     }
 
-    /* Mobile */
+    /* Floating Cart */
+    #cartButton {
+      position: fixed;
+      top: 85px;
+      right: 18px;
+      width: 52px;
+      height: 52px;
+      background: #111;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 23px;
+      cursor: pointer;
+      z-index: 2000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    #cartCount {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: #d62828;
+      color: white;
+      width: 21px;
+      height: 21px;
+      border-radius: 50%;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Cart Box */
+    #cartBox {
+      display: none;
+      position: fixed;
+      top: 145px;
+      right: 15px;
+      width: 330px;
+      max-width: 90%;
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.25);
+      z-index: 1999;
+    }
+
+    #cartBox h2 {
+      margin-bottom: 15px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+
+    .remove {
+      background: #d62828;
+      color: white;
+      border: none;
+      padding: 5px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .order-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: #25D366;
+      color: white;
+      padding: 12px;
+      border-radius: 7px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
     @media (max-width: 700px) {
       header {
         flex-direction: column;
@@ -205,26 +278,29 @@
       }
 
       nav a {
-        margin: 0 6px;
+        margin: 0 5px;
         font-size: 13px;
       }
 
       .hero h1 {
-        font-size: 34px;
+        font-size: 32px;
       }
 
-      .hero p {
-        font-size: 16px;
-      }
-
-      .section {
-        padding: 50px 20px;
+      #cartBox {
+        top: 140px;
+        right: 5%;
       }
     }
   </style>
 </head>
 
 <body>
+
+  <!-- Floating Cart -->
+  <div id="cartButton" onclick="openCart()">
+    🛒
+    <span id="cartCount">0</span>
+  </div>
 
   <!-- Header -->
   <header>
@@ -243,11 +319,8 @@
   <!-- Hero -->
   <section class="hero" id="home">
     <div>
-      <h1>Welcome to <span>Mughal Paint Hardware</span></h1>
-
-      <p>
-        Quality Paints, Hardware & Colour Solutions
-      </p>
+      <h1>Mughal Paint Hardware</h1>
+      <p>Quality Paints, Hardware & Sanitary Products</p>
 
       <a class="btn"
          href="https://wa.me/923430573152"
@@ -262,125 +335,78 @@
   </section>
 
   <!-- Products -->
- <section class="section" id="products">
+  <section class="section" id="products">
 
-  <h2>Our <span>Products</span></h2>
+    <h2>Our <span>Products</span></h2>
 
-  <div class="products">
-
-    <div class="card">
-      <img src="paint.jpg" alt="Paint Products" style="width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:15px;">
-      <h3>Paint</h3>
-      <p>Quality paints for homes, shops and offices.</p>
-    </div>
-
-    <div class="card">
-     <img src="Sanitary.jpg" alt="Sanitary Products" style="width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:15px;">
-      <h3>Sanitary</h3>
-      <p>Sanitary products for bathroom and home needs.</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">🖌️</div>
-      <h3>Brushes</h3>
-      <p>Different quality brushes for painting work.</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">🖼️</div>
-      <h3>Rollers</h3>
-      <p>Paint rollers for smooth and easy painting.</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">🔵</div>
-      <h3>Pipes</h3>
-      <p>Quality pipes for plumbing and construction needs.</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">🚰</div>
-      <h3>Taps</h3>
-      <p>Modern and durable taps for your home.</p>
-    </div>
-
-    <div class="card">
-      <img src="Hardware.jpg" alt="Hardware Products" style="width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:15px;">
-      <h3>Hardware</h3>
-      <p>Useful hardware products and tools for your projects.</p>
-    </div>
-<div class="card">
-  <img src="Brushes.jpg" alt="Brushes" style="width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:15px;">
-
-  <h3>Brushes</h3>
-
-  <p>Quality brushes for painting and finishing work.</p>
-</div>
-  </div>
-<div class="card">
-  <img src="Rollers.jpg" alt="Rollers" style="width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:15px;">
-
-  <h3>Rollers</h3>
-
-  <p>Quality paint rollers for smooth and easy painting.</p>
-</div>
-</section>
-<div class="card">
-  <img src="Pipes.jpg" alt="Pipes" style="width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:15px;">
-
-  <h3>Pipes</h3>
-
-  <p>Quality pipes for plumbing and construction needs.</p>
-</div>
     <div class="products">
 
       <div class="card">
-        <div class="icon">🎨</div>
-        <h3>Wall Paint</h3>
-        <p>
-          Beautiful and durable paints for your home and business walls.
-        </p>
+        <img src="paint.jpg" alt="Paint Products">
+        <h3>Paint</h3>
+        <p>Quality paints for homes, shops and offices.</p>
+        <button class="cart-add" onclick="addToCart('Paint')">
+          Add to Cart
+        </button>
       </div>
 
       <div class="card">
-        <div class="icon">🏠</div>
-        <h3>Exterior Paint</h3>
-        <p>
-          Strong and long-lasting paints for exterior walls.
-        </p>
+        <img src="sanitary.jpg" alt="Sanitary Products">
+        <h3>Sanitary</h3>
+        <p>Sanitary products for bathroom and home needs.</p>
+        <button class="cart-add" onclick="addToCart('Sanitary')">
+          Add to Cart
+        </button>
       </div>
 
       <div class="card">
-        <div class="icon">🖌️</div>
-        <h3>Interior Paint</h3>
-        <p>
-          Premium finish colours for attractive interiors.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="icon">🔨</div>
+        <img src="hardware.jpg" alt="Hardware Products">
         <h3>Hardware</h3>
-        <p>
-          Hardware products and useful tools for construction and renovation.
-        </p>
+        <p>Quality hardware products and useful tools.</p>
+        <button class="cart-add" onclick="addToCart('Hardware')">
+          Add to Cart
+        </button>
+      </div>
+
+      <div class="card">
+        <img src="brushes.jpg" alt="Brushes">
+        <h3>Brushes</h3>
+        <p>Quality brushes for painting and finishing work.</p>
+        <button class="cart-add" onclick="addToCart('Brushes')">
+          Add to Cart
+        </button>
+      </div>
+
+      <div class="card">
+        <img src="rollers.jpg" alt="Rollers">
+        <h3>Rollers</h3>
+        <p>Quality paint rollers for smooth painting.</p>
+        <button class="cart-add" onclick="addToCart('Rollers')">
+          Add to Cart
+        </button>
+      </div>
+
+      <div class="card">
+        <img src="pipes.jpg" alt="Pipes">
+        <h3>Pipes</h3>
+        <p>Quality pipes for plumbing and construction.</p>
+        <button class="cart-add" onclick="addToCart('Pipes')">
+          Add to Cart
+        </button>
       </div>
 
     </div>
-
   </section>
 
   <!-- About -->
   <section class="section about" id="about">
-
     <h2>About <span>Us</span></h2>
 
     <p>
-      Mughal Paint Hardware provides quality paints, hardware products
-      and colour solutions for homes, shops, offices and businesses.
-      Our aim is to provide reliable products and friendly customer service.
+      Mughal Paint Hardware & Sanitary Store provides quality
+      paints, hardware, sanitary products and plumbing solutions
+      for homes, shops and businesses.
     </p>
-
   </section>
 
   <!-- Contact -->
@@ -389,25 +415,107 @@
     <h2>Contact <span>Us</span></h2>
 
     <p>📞 Phone: 0343-0573152</p>
-<p>📍 Address: Jokalian Road, Adda Pahrrianwali</p>
-    <p>💬 WhatsApp: 0343-0573152</p>
+    <p>📍 Address: Jokalian Road, Adda Pahrrianwali</p>
 
     <a class="whatsapp"
        href="https://wa.me/923430573152"
        target="_blank">
-      Chat With Us on WhatsApp
+      💬 Chat With Us on WhatsApp
     </a>
-<a class="whatsapp"
-   href="https://maps.app.goo.gl/HroTZdnWoNVp2e1u7"
-   target="_blank">
-  📍 Get Directions on Google Maps
-</a>
+
+    <br>
+
+    <a class="whatsapp"
+       href="https://maps.app.goo.gl/HroTZdnWoNVp2e1u7"
+       target="_blank">
+      📍 Get Directions on Google Maps
+    </a>
+
   </section>
 
-  <!-- Footer -->
+  <!-- Cart Box -->
+  <div id="cartBox">
+
+    <h2>🛒 Your Cart</h2>
+
+    <div id="cartItems">
+      <p>Your cart is empty.</p>
+    </div>
+
+    <a id="orderBtn"
+       class="order-btn"
+       href="#"
+       target="_blank">
+      Order on WhatsApp
+    </a>
+
+  </div>
+
   <footer>
-    © 2026 Mughal Paint Hardware — All Rights Reserved.
+    © 2026 Mughal Paint Hardware & Sanitary Store
   </footer>
+
+  <script>
+    let cart = [];
+
+    function addToCart(product) {
+      cart.push(product);
+      updateCart();
+
+      alert(product + " added to cart!");
+    }
+
+    function updateCart() {
+      document.getElementById("cartCount").textContent = cart.length;
+
+      const cartItems = document.getElementById("cartItems");
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = "<p>Your cart is empty.</p>";
+        return;
+      }
+
+      cartItems.innerHTML = "";
+
+      cart.forEach(function(product, index) {
+
+        const item = document.createElement("div");
+
+        item.className = "cart-item";
+
+        item.innerHTML =
+          "<span>" + product + "</span>" +
+          "<button class='remove' onclick='removeFromCart(" +
+          index + ")'>Remove</button>";
+
+        cartItems.appendChild(item);
+      });
+
+      let message = "Assalam o Alaikum, I want to order:%0A%0A";
+
+      cart.forEach(function(product, index) {
+        message += (index + 1) + ". " + product + "%0A";
+      });
+
+      document.getElementById("orderBtn").href =
+        "https://wa.me/923430573152?text=" + message;
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    function openCart() {
+      const box = document.getElementById("cartBox");
+
+      if (box.style.display === "block") {
+        box.style.display = "none";
+      } else {
+        box.style.display = "block";
+      }
+    }
+  </script>
 
 </body>
 </html>
