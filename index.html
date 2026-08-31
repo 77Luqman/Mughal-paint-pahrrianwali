@@ -18,6 +18,7 @@
     html {
       scroll-behavior: smooth;
     }
+
     body {
       background: #f5f5f5;
       color: #222;
@@ -135,6 +136,14 @@
       margin-bottom: 15px;
     }
 
+    .price {
+      font-size: 17px;
+      font-weight: bold;
+      color: #d62828;
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+
     .cart-add {
       background: #111;
       color: white;
@@ -247,6 +256,7 @@
       align-items: center;
       border-bottom: 1px solid #ddd;
       padding: 10px 0;
+      gap: 10px;
     }
 
     .remove {
@@ -256,19 +266,6 @@
       padding: 5px 8px;
       border-radius: 4px;
       cursor: pointer;
-    }
-
-    .order-btn {
-      display: block;
-      width: 100%;
-      text-align: center;
-      background: #25D366;
-      color: white;
-      padding: 12px;
-      border-radius: 7px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 15px;
     }
 
     @media (max-width: 700px) {
@@ -341,6 +338,8 @@
 
     <div class="products">
 
+      <!-- Existing Products -->
+
       <div class="card">
         <img src="paint.jpg" alt="Paint Products">
         <h3>Paint</h3>
@@ -395,8 +394,96 @@
         </button>
       </div>
 
+
+      <!-- NEW PAINT PRODUCTS -->
+
+      <div class="card">
+        <img src="weather-defender.jpg" alt="Weather Defender">
+        <h3>Weather Defender</h3>
+        <p>Quality exterior paint for strong and durable protection.</p>
+        <div class="price">
+          Gallon: Rs. 4,200<br>
+          Drum: Rs. 15,000
+        </div>
+        <button class="cart-add" onclick="addToCart('Weather Defender')">
+          Add to Cart
+        </button>
+      </div>
+
+
+      <div class="card">
+        <img src="high-gloss-enamel.jpg" alt="Diamond Paints High Gloss Enamel">
+        <h3>High Gloss Enamel</h3>
+        <p>Diamond Paints High Gloss Enamel.</p>
+        <div class="price">
+          Gallon: Rs. 4,200
+        </div>
+        <button class="cart-add" onclick="addToCart('High Gloss Enamel - Rs. 4,200')">
+          Add to Cart
+        </button>
+      </div>
+
+
+      <div class="card">
+        <img src="emulsion.jpg" alt="Emulsion Distemper">
+        <h3>Emulsion / Distemper</h3>
+        <p>Quality emulsion paint for walls and interior surfaces.</p>
+        <div class="price">
+          Quarter: Rs. 600<br>
+          Gallon: Rs. 2,000<br>
+          Drum 14/15L: Rs. 6,500
+        </div>
+        <button class="cart-add" onclick="addToCart('Emulsion / Distemper')">
+          Add to Cart
+        </button>
+      </div>
+
+
+      <div class="card">
+        <img src="thinner.jpg" alt="Thinner">
+        <h3>Thinner</h3>
+        <p>Quality thinner for paint and finishing work.</p>
+        <div class="price">
+          Quarter: Rs. 800<br>
+          Gallon: Rs. 2,850
+        </div>
+        <button class="cart-add" onclick="addToCart('Thinner')">
+          Add to Cart
+        </button>
+      </div>
+
+
+      <div class="card">
+        <img src="metallic-1601.jpg" alt="Metallic Paint 1601">
+        <h3>Metallic Paint 1601</h3>
+        <p>Metallic paint for decorative and finishing work.</p>
+        <div class="price">
+          Quarter: Rs. 1,200<br>
+          Gallon: Rs. 4,400
+        </div>
+        <button class="cart-add" onclick="addToCart('Metallic Paint 1601')">
+          Add to Cart
+        </button>
+      </div>
+
+
+      <div class="card">
+        <img src="durasilk.jpg" alt="Durasilk">
+        <h3>Durasilk</h3>
+        <p>Quality Durasilk paint for smooth and durable finishing.</p>
+        <div class="price">
+          Gallon / Can: Rs. 5,500<br>
+          Quarter: Rs. 2,500<br>
+          1 Liter: Rs. 1,500
+        </div>
+        <button class="cart-add" onclick="addToCart('Durasilk')">
+          Add to Cart
+        </button>
+      </div>
+
     </div>
   </section>
+
 
   <!-- About -->
   <section class="section about" id="about">
@@ -408,6 +495,7 @@
       for homes, shops and businesses.
     </p>
   </section>
+
 
   <!-- Contact -->
   <section class="section contact" id="contact">
@@ -433,46 +521,51 @@
 
   </section>
 
- 
-<div id="cartBox">
 
-  <h2>🛒 Your Cart</h2>
+  <!-- Cart -->
+  <div id="cartBox">
 
-  <div id="cartItems">
-    <p>Your cart is empty.</p>
+    <h2>🛒 Your Cart</h2>
+
+    <div id="cartItems">
+      <p>Your cart is empty.</p>
+    </div>
+
+    <h3 style="margin-top:15px;">
+      Total:
+      <span id="totalBill">Rs. 0</span>
+    </h3>
+
+    <input
+      type="text"
+      id="customerName"
+      placeholder="Customer Name"
+      style="width:100%; padding:12px; margin-top:15px; border:1px solid #ddd; border-radius:6px;">
+
+    <input
+      type="tel"
+      id="customerPhone"
+      placeholder="Phone Number"
+      style="width:100%; padding:12px; margin-top:10px; border:1px solid #ddd; border-radius:6px;">
+
+    <button
+      onclick="sendOrder()"
+      style="width:100%; padding:13px; margin-top:15px; background:#25D366; color:white; border:none; border-radius:7px; font-weight:bold; cursor:pointer;">
+
+      📲 Order on WhatsApp
+
+    </button>
+
   </div>
 
-  <h3 style="margin-top:15px;">
-    Total:
-    <span id="totalBill">Rs. 0</span>
-  </h3>
 
-  <input
-    type="text"
-    id="customerName"
-    placeholder="Customer Name"
-    style="width:100%; padding:12px; margin-top:15px; border:1px solid #ddd; border-radius:6px;">
-
-  <input
-    type="tel"
-    id="customerPhone"
-    placeholder="Phone Number"
-    style="width:100%; padding:12px; margin-top:10px; border:1px solid #ddd; border-radius:6px;">
-
-  <button
-    onclick="sendOrder()"
-    style="width:100%; padding:13px; margin-top:15px; background:#25D366; color:white; border:none; border-radius:7px; font-weight:bold; cursor:pointer;">
-
-    📲 Order on WhatsApp
-
-  </button>
-
-</div>
   <footer>
-    © 2026 Mughal Paint Hardware & Sanitary Store
+    ©️ 2026 Mughal Paint Hardware & Sanitary Store
   </footer>
 
+
   <script>
+
     let cart = [];
 
     function addToCart(product) {
@@ -482,15 +575,22 @@
       alert(product + " added to cart!");
     }
 
+
     function updateCart() {
+
       document.getElementById("cartCount").textContent = cart.length;
 
       const cartItems = document.getElementById("cartItems");
 
       if (cart.length === 0) {
+
         cartItems.innerHTML = "<p>Your cart is empty.</p>";
+
+        document.getElementById("totalBill").textContent = "Rs. 0";
+
         return;
       }
+
 
       cartItems.innerHTML = "";
 
@@ -506,32 +606,105 @@
           index + ")'>Remove</button>";
 
         cartItems.appendChild(item);
+
       });
 
-      let message = "Assalam o Alaikum, I want to order:%0A%0A";
 
-      cart.forEach(function(product, index) {
-        message += (index + 1) + ". " + product + "%0A";
-      });
+      document.getElementById("totalBill").textContent =
+        "See prices above";
 
-      document.getElementById("orderBtn").href =
-        "https://wa.me/923430573152?text=" + message;
     }
+
 
     function removeFromCart(index) {
+
       cart.splice(index, 1);
+
       updateCart();
+
     }
 
+
     function openCart() {
+
       const box = document.getElementById("cartBox");
 
       if (box.style.display === "block") {
+
         box.style.display = "none";
+
       } else {
+
         box.style.display = "block";
+
       }
+
     }
+
+
+    function sendOrder() {
+
+      if (cart.length === 0) {
+
+        alert("Your cart is empty!");
+
+        return;
+
+      }
+
+
+      const name =
+        document.getElementById("customerName").value.trim();
+
+      const phone =
+        document.getElementById("customerPhone").value.trim();
+
+
+      let message =
+        "Assalam o Alaikum, I want to order:%0A%0A";
+
+
+      if (name) {
+
+        message +=
+          "Customer Name: " +
+          encodeURIComponent(name) +
+          "%0A";
+
+      }
+
+
+      if (phone) {
+
+        message +=
+          "Phone: " +
+          encodeURIComponent(phone) +
+          "%0A";
+
+      }
+
+
+      message += "%0AProducts:%0A";
+
+
+      cart.forEach(function(product, index) {
+
+        message +=
+          (index + 1) +
+          ". " +
+          encodeURIComponent(product) +
+          "%0A";
+
+      });
+
+
+      window.open(
+        "https://wa.me/923430573152?text=" + message,
+        "_blank"
+      );
+
+    }
+
   </script>
 
 </body>
