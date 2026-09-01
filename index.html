@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="google-site-verification" content="2LXyHf3Wkz-odez08ChvHmsAwKds_GTqOELeNJ5hI0E">
+<meta name="google-site-verification" content="2LXyHf3Wkz-odez08ChvHmsAwKds_GTqOELeNJ5hI0E" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,17 +15,21 @@
   font-family:Arial,sans-serif;
 }
 
-html{scroll-behavior:smooth}
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   background:#f5f5f5;
   color:#222;
 }
 
+/* HEADER */
+
 header{
   background:#111;
   color:white;
-  padding:16px 6%;
+  padding:16px 5%;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -35,7 +39,7 @@ header{
 }
 
 .logo{
-  font-size:22px;
+  font-size:21px;
   font-weight:bold;
 }
 
@@ -46,12 +50,14 @@ header{
 nav a{
   color:white;
   text-decoration:none;
-  margin-left:16px;
+  margin-left:15px;
   font-size:14px;
 }
 
+/* HERO */
+
 .hero{
-  min-height:72vh;
+  min-height:70vh;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -88,33 +94,42 @@ nav a{
   background:#111;
 }
 
+/* SECTIONS */
+
 .section{
-  padding:60px 6%;
+  padding:55px 5%;
   text-align:center;
 }
 
 .section h2{
   font-size:31px;
-  margin-bottom:35px;
+  margin-bottom:30px;
 }
 
 .section h2 span{
   color:#d62828;
 }
 
+/* PRODUCTS */
+
 .products{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-  gap:22px;
+  gap:20px;
   max-width:1100px;
   margin:auto;
 }
 
 .card{
   background:white;
-  padding:20px;
-  border-radius:12px;
+  padding:18px;
+  border-radius:13px;
   box-shadow:0 4px 15px rgba(0,0,0,.1);
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-3px);
 }
 
 .card img{
@@ -122,39 +137,34 @@ nav a{
   height:180px;
   object-fit:cover;
   border-radius:10px;
-  margin-bottom:15px;
+  margin-bottom:14px;
 }
 
 .card h3{
-  margin-bottom:10px;
-  font-size:20px;
+  margin-bottom:8px;
 }
 
 .card p{
   color:#666;
-  line-height:1.5;
-  margin-bottom:15px;
-}
-
-.category-btn,
-.cart-add{
-  background:#111;
-  color:white;
-  border:none;
-  padding:10px 18px;
-  border-radius:6px;
-  cursor:pointer;
-  font-weight:bold;
+  margin-bottom:14px;
 }
 
 .category-btn{
   width:100%;
+  background:#111;
+  color:white;
+  border:none;
+  padding:11px;
+  border-radius:7px;
+  cursor:pointer;
+  font-weight:bold;
 }
 
-.category-btn:hover,
-.cart-add:hover{
+.category-btn:hover{
   background:#d62828;
 }
+
+/* ABOUT */
 
 .about{
   background:white;
@@ -166,6 +176,8 @@ nav a{
   line-height:1.8;
   color:#555;
 }
+
+/* CONTACT */
 
 .contact{
   background:#181818;
@@ -185,24 +197,17 @@ nav a{
   border-radius:7px;
   text-decoration:none;
   font-weight:bold;
-  margin-top:15px;
-}
-
-footer{
-  background:#000;
-  color:#aaa;
-  text-align:center;
-  padding:20px;
+  margin-top:12px;
 }
 
 /* CART */
 
 #cartButton{
   position:fixed;
-  top:85px;
-  right:18px;
-  width:52px;
-  height:52px;
+  top:80px;
+  right:17px;
+  width:53px;
+  height:53px;
   background:#111;
   color:white;
   border-radius:50%;
@@ -233,14 +238,14 @@ footer{
 #cartBox{
   display:none;
   position:fixed;
-  top:145px;
+  top:140px;
   right:15px;
   width:350px;
   max-width:90%;
   max-height:75vh;
   overflow-y:auto;
   background:white;
-  border-radius:12px;
+  border-radius:13px;
   padding:20px;
   box-shadow:0 5px 25px rgba(0,0,0,.25);
   z-index:1999;
@@ -259,28 +264,28 @@ footer{
   background:#d62828;
   color:white;
   border:none;
-  padding:5px 8px;
-  border-radius:4px;
+  padding:6px 9px;
+  border-radius:5px;
   cursor:pointer;
 }
 
-/* CATEGORY */
+/* CATEGORY MODAL */
 
 #categoryModal{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.65);
+  background:rgba(0,0,0,.7);
   z-index:3000;
-  padding:30px 15px;
+  padding:20px 12px;
   overflow-y:auto;
 }
 
 .modal-content{
   background:white;
-  max-width:850px;
-  margin:40px auto;
-  padding:25px;
+  max-width:900px;
+  margin:35px auto;
+  padding:22px;
   border-radius:15px;
 }
 
@@ -295,39 +300,67 @@ footer{
   background:#d62828;
   color:white;
   border:none;
-  width:35px;
-  height:35px;
+  width:36px;
+  height:36px;
   border-radius:50%;
   cursor:pointer;
-  font-size:18px;
+  font-size:20px;
 }
 
 .variant-list{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
+  gap:18px;
 }
 
 .variant{
   border:1px solid #ddd;
-  border-radius:10px;
+  border-radius:12px;
   padding:15px;
   text-align:center;
+  background:#fff;
 }
 
 .variant img{
   width:100%;
-  height:140px;
+  height:160px;
   object-fit:cover;
-  border-radius:8px;
-  margin-bottom:10px;
+  border-radius:9px;
+  margin-bottom:12px;
 }
 
-.price{
-  font-size:17px;
+.variant h3{
+  margin-bottom:8px;
+}
+
+.variant-size{
+  color:#666;
+  margin:8px 0;
+}
+
+.variant-price{
+  font-size:20px;
   font-weight:bold;
   color:#d62828;
+  background:#fff3f3;
+  padding:9px;
+  border-radius:7px;
   margin:12px 0;
+}
+
+.cart-add{
+  background:#111;
+  color:white;
+  border:none;
+  padding:11px 18px;
+  border-radius:7px;
+  cursor:pointer;
+  font-weight:bold;
+  width:100%;
+}
+
+.cart-add:hover{
+  background:#25D366;
 }
 
 /* ADMIN */
@@ -339,7 +372,7 @@ footer{
   background:#f5f5f5;
   z-index:5000;
   overflow-y:auto;
-  padding:25px;
+  padding:20px;
 }
 
 .admin-container{
@@ -350,27 +383,31 @@ footer{
 .admin-box{
   background:white;
   padding:20px;
-  border-radius:12px;
+  border-radius:13px;
   margin-bottom:20px;
   box-shadow:0 4px 15px rgba(0,0,0,.1);
+}
+
+.admin-box h2{
+  margin-bottom:18px;
 }
 
 .admin-input{
   width:100%;
   padding:12px;
-  margin:7px 0;
+  margin:6px 0;
   border:1px solid #ccc;
   border-radius:7px;
   font-size:15px;
 }
 
 .admin-btn{
-  padding:11px 18px;
+  padding:11px 17px;
   border:none;
   border-radius:7px;
   cursor:pointer;
   font-weight:bold;
-  margin:5px;
+  margin:4px;
 }
 
 .save-btn{
@@ -384,17 +421,12 @@ footer{
 }
 
 .edit-btn{
-  background:#f5c542;
-  color:#111;
+  background:#f5a623;
+  color:white;
 }
 
 .logout-btn{
   background:#111;
-  color:white;
-}
-
-.cancel-btn{
-  background:#777;
   color:white;
 }
 
@@ -409,50 +441,52 @@ footer{
   margin-top:8px;
 }
 
-#productImageFile{
+#productImageFile,
+#editImageFile{
   display:none;
 }
 
-#imagePreview{
+#imagePreview,
+#editImagePreview{
   display:none;
-  width:150px;
-  height:150px;
+  width:130px;
+  height:130px;
   object-fit:cover;
   border-radius:10px;
-  margin:15px auto;
+  margin:12px auto;
   border:2px solid #ddd;
 }
 
 .admin-product{
   border:1px solid #ddd;
   border-radius:10px;
-  padding:15px;
-  margin-top:12px;
+  padding:13px;
+  margin-top:10px;
   display:flex;
   align-items:center;
-  gap:15px;
+  gap:13px;
 }
 
 .admin-product img{
-  width:75px;
-  height:75px;
+  width:70px;
+  height:70px;
   object-fit:cover;
   border-radius:8px;
 }
 
-.admin-product-info{
+.admin-info{
   flex:1;
 }
 
 .admin-actions{
   display:flex;
   flex-wrap:wrap;
-  justify-content:flex-end;
+  gap:4px;
 }
 
 #adminLogin{
   max-width:400px;
-  margin:80px auto;
+  margin:70px auto;
   background:white;
   padding:30px;
   border-radius:15px;
@@ -460,26 +494,45 @@ footer{
   text-align:center;
 }
 
-.editing-box{
-  border:2px solid #f5c542;
-  background:#fffbea;
+/* EDIT BOX */
+
+#editBox{
+  display:none;
+  background:#fff8e8;
+  border:2px solid #f5a623;
+  padding:18px;
+  border-radius:12px;
+  margin-bottom:20px;
 }
 
-.empty-products{
-  padding:25px;
-  text-align:center;
-  color:#777;
+.edit-title{
+  color:#d97706;
+  margin-bottom:12px;
 }
+
+/* FOOTER */
+
+footer{
+  background:#000;
+  color:#aaa;
+  text-align:center;
+  padding:20px;
+}
+
+/* MOBILE */
 
 @media(max-width:700px){
 
   header{
     flex-direction:column;
-    gap:12px;
+    gap:10px;
   }
 
   nav{
-    text-align:center;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:5px;
   }
 
   nav a{
@@ -495,28 +548,40 @@ footer{
     font-size:16px;
   }
 
+  .section{
+    padding:45px 15px;
+  }
+
   #cartBox{
-    top:140px;
+    top:135px;
     right:5%;
+  }
+
+  .modal-content{
+    margin:15px auto;
+    padding:15px;
+  }
+
+  .variant-list{
+    grid-template-columns:1fr;
   }
 
   .admin-product{
     flex-direction:column;
     align-items:stretch;
-    text-align:center;
   }
 
   .admin-product img{
-    margin:auto;
+    width:100%;
+    height:180px;
   }
 
   .admin-actions{
-    justify-content:center;
+    width:100%;
   }
 
-  .admin-btn{
+  .admin-actions button{
     flex:1;
-    min-width:100px;
   }
 }
 </style>
@@ -524,7 +589,7 @@ footer{
 
 <body>
 
-<!-- CART BUTTON -->
+<!-- CART -->
 
 <div id="cartButton" onclick="openCart()">
 🛒
@@ -633,7 +698,7 @@ target="_blank">
 
 </section>
 
-<!-- CART -->
+<!-- CART BOX -->
 
 <div id="cartBox">
 
@@ -678,7 +743,9 @@ style="width:100%;padding:13px;margin-top:15px;background:#25D366;color:white;bo
 
 <div class="modal-header">
 
-<h2 id="modalTitle">Products</h2>
+<h2 id="modalTitle">
+Products
+</h2>
 
 <button
 class="close-btn"
@@ -739,19 +806,17 @@ Close
 
 <div class="admin-box">
 
-<h2>
-⚙️ Product Admin Panel
-</h2>
+<h2>⚙️ Product Admin Panel</h2>
 
 <p style="color:#666;margin-bottom:15px;">
-نیا product شامل کریں یا پہلے سے موجود product کو edit کریں۔
+نیا product شامل کریں، یا پہلے سے موجود product کو edit کریں۔
 </p>
 
 <input
 type="text"
 id="productCategory"
 class="admin-input"
-placeholder="Category e.g. Metallic Paint">
+placeholder="Category e.g. Thinner">
 
 <input
 type="text"
@@ -769,14 +834,13 @@ placeholder="Size e.g. Gallon / Quarter">
 type="number"
 id="productPrice"
 class="admin-input"
-placeholder="Price">
+placeholder="Price"
+min="0">
 
 <label
 for="productImageFile"
 class="photo-label">
-
-📷 Choose / Change Product Photo
-
+📷 Choose Product Photo
 </label>
 
 <input
@@ -787,25 +851,79 @@ onchange="previewProductImage(event)">
 
 <img
 id="imagePreview"
-alt="Product Preview">
+alt="Preview">
 
 <button
-id="saveProductButton"
 class="admin-btn save-btn"
-onclick="saveProduct()">
-
+onclick="addProduct()">
 ➕ Add Product
+</button>
 
+</div>
+
+<!-- EDIT -->
+
+<div id="editBox">
+
+<h2 class="edit-title">
+✏️ Edit Existing Product
+</h2>
+
+<input
+type="hidden"
+id="editIndex">
+
+<input
+type="text"
+id="editCategory"
+class="admin-input"
+placeholder="Category">
+
+<input
+type="text"
+id="editName"
+class="admin-input"
+placeholder="Product Name">
+
+<input
+type="text"
+id="editSize"
+class="admin-input"
+placeholder="Size">
+
+<input
+type="number"
+id="editPrice"
+class="admin-input"
+placeholder="Price"
+min="0">
+
+<label
+for="editImageFile"
+class="photo-label">
+📷 Change Product Photo
+</label>
+
+<input
+type="file"
+id="editImageFile"
+accept="image/*"
+onchange="previewEditImage(event)">
+
+<img
+id="editImagePreview"
+alt="Edit Preview">
+
+<button
+class="admin-btn save-btn"
+onclick="saveEdit()">
+💾 Save Changes
 </button>
 
 <button
-id="cancelEditButton"
-class="admin-btn cancel-btn"
-onclick="cancelEdit()"
-style="display:none;">
-
-✕ Cancel Edit
-
+class="admin-btn logout-btn"
+onclick="cancelEdit()">
+Cancel
 </button>
 
 </div>
@@ -825,17 +943,13 @@ style="display:none;">
 <button
 class="admin-btn logout-btn"
 onclick="logoutAdmin()">
-
 🔒 Logout
-
 </button>
 
 <button
 class="admin-btn delete-btn"
 onclick="closeAdmin()">
-
 ✕ Close Admin
-
 </button>
 
 </div>
@@ -850,18 +964,13 @@ onclick="closeAdmin()">
 
 <script>
 
-/* =========================
-   ADMIN PASSWORD
-========================= */
+/* ADMIN PASSWORD */
 
 const ADMIN_PASSWORD = "12345";
 
+/* PRODUCTS */
 
-/* =========================
-   DEFAULT PRODUCTS
-========================= */
-
-const defaultProducts = [
+let defaultProducts = [
 
 {
 category:"Paint",
@@ -1017,22 +1126,26 @@ image:"durasilk.jpg"
 
 ];
 
+/*
+  IMPORTANT:
+  اگر پہلے سے products localStorage میں موجود ہیں
+  تو وہی products استعمال ہوں گے۔
+*/
 
-/* =========================
-   LOAD PRODUCTS
-========================= */
+let savedProducts =
+localStorage.getItem("mughalProducts");
 
 let products;
 
 try{
 
-const saved =
-localStorage.getItem("mughalProducts");
-
-products =
-saved
-? JSON.parse(saved)
+products = savedProducts
+? JSON.parse(savedProducts)
 : defaultProducts;
+
+if(!Array.isArray(products)){
+products = defaultProducts;
+}
 
 }catch(error){
 
@@ -1041,17 +1154,12 @@ products = defaultProducts;
 }
 
 let cart = [];
-
 let selectedImage = "";
+let selectedEditImage = "";
 
-let editingIndex = -1;
+/* SAVE */
 
-
-/* =========================
-   SAVE PRODUCTS
-========================= */
-
-function saveProductsToStorage(){
+function saveProducts(){
 
 localStorage.setItem(
 "mughalProducts",
@@ -1060,28 +1168,22 @@ JSON.stringify(products)
 
 }
 
-
-/* =========================
-   PHOTO PREVIEW
-========================= */
+/* IMAGE PREVIEW */
 
 function previewProductImage(event){
 
-const file =
-event.target.files[0];
+const file = event.target.files[0];
 
 if(!file) return;
 
 if(!file.type.startsWith("image/")){
 
 alert("Please select an image file.");
-
 return;
 
 }
 
-const reader =
-new FileReader();
+const reader = new FileReader();
 
 reader.onload=function(e){
 
@@ -1091,7 +1193,6 @@ const preview =
 document.getElementById("imagePreview");
 
 preview.src=selectedImage;
-
 preview.style.display="block";
 
 };
@@ -1100,17 +1201,58 @@ reader.readAsDataURL(file);
 
 }
 
+/* EDIT IMAGE PREVIEW */
 
-/* =========================
-   RENDER CATEGORIES
-========================= */
+function previewEditImage(event){
+
+const file=event.target.files[0];
+
+if(!file) return;
+
+if(!file.type.startsWith("image/")){
+
+alert("Please select an image file.");
+return;
+
+}
+
+const reader=new FileReader();
+
+reader.onload=function(e){
+
+selectedEditImage=e.target.result;
+
+const preview =
+document.getElementById("editImagePreview");
+
+preview.src=selectedEditImage;
+preview.style.display="block";
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+/* SAFE HTML */
+
+function safeText(text){
+
+return String(text ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+/* SHOW CATEGORIES */
 
 function renderCategories(){
 
 const container =
-document.getElementById(
-"productCategories"
-);
+document.getElementById("productCategories");
 
 container.innerHTML="";
 
@@ -1118,42 +1260,40 @@ const categories=[];
 
 products.forEach(product=>{
 
-if(
-product.category &&
-!categories.includes(product.category)
-){
+const category =
+product.category || "Other";
 
-categories.push(product.category);
+if(!categories.includes(category)){
+
+categories.push(category);
 
 }
 
 });
 
-
 categories.forEach(category=>{
 
 const categoryProducts =
-products.filter(
-product =>
-product.category === category
+products.filter(product=>
+(product.category || "Other")===category
 );
 
-const firstProduct =
-categoryProducts[0];
+if(categoryProducts.length===0) return;
 
-const card =
-document.createElement("div");
+const firstProduct=categoryProducts[0];
+
+const card=document.createElement("div");
 
 card.className="card";
 
 card.innerHTML=`
 
 <img
-src="${firstProduct.image || "paint.jpg"}"
-alt="${category}"
+src="${safeText(firstProduct.image || "paint.jpg")}"
+alt="${safeText(category)}"
 onerror="this.src='paint.jpg'">
 
-<h3>${category}</h3>
+<h3>${safeText(category)}</h3>
 
 <p>
 ${categoryProducts.length}
@@ -1162,9 +1302,9 @@ varieties available
 
 <button
 class="category-btn"
-onclick="openCategory(${JSON.stringify(category)})">
+onclick="openCategoryByIndex(${products.indexOf(firstProduct)})">
 
-View ${category}
+View ${safeText(category)}
 
 </button>
 
@@ -1176,33 +1316,35 @@ container.appendChild(card);
 
 }
 
+/* OPEN CATEGORY */
 
-/* =========================
-   OPEN CATEGORY
-========================= */
+function openCategoryByIndex(index){
+
+const product=products[index];
+
+if(!product) return;
+
+openCategory(product.category);
+
+}
+
+/* OPEN CATEGORY */
 
 function openCategory(category){
 
 const modal =
-document.getElementById(
-"categoryModal"
-);
+document.getElementById("categoryModal");
 
-document.getElementById(
-"modalTitle"
-).textContent=category;
+document.getElementById("modalTitle")
+.textContent=category;
 
 const list =
-document.getElementById(
-"variantList"
-);
+document.getElementById("variantList");
 
 list.innerHTML="";
 
-const items =
-products.filter(
-product =>
-product.category === category
+const items=products.filter(product=>
+(product.category || "Other")===category
 );
 
 if(items.length===0){
@@ -1210,60 +1352,70 @@ if(items.length===0){
 list.innerHTML=
 "<p>No products available.</p>";
 
-}
+}else{
 
 items.forEach(product=>{
 
-const index =
-products.indexOf(product);
+const index=products.indexOf(product);
 
-const div =
-document.createElement("div");
+const div=document.createElement("div");
 
 div.className="variant";
+
+/*
+  PRICE FIX:
+  Price کو ہمیشہ display کیا جائے گا۔
+*/
+
+let priceText;
+
+const numericPrice=Number(product.price);
+
+if(Number.isFinite(numericPrice) && numericPrice>0){
+
+priceText=
+"Rs. " +
+numericPrice.toLocaleString("en-PK");
+
+}else{
+
+priceText="Price on request";
+
+}
 
 div.innerHTML=`
 
 <img
-src="${product.image || "paint.jpg"}"
-alt="${product.name}"
+src="${safeText(product.image || "paint.jpg")}"
+alt="${safeText(product.name)}"
 onerror="this.src='paint.jpg'">
 
-<h3>${product.name}</h3>
+<h3>
+${safeText(product.name || "Product")}
+</h3>
 
 ${
 product.size
 ?
-`<p style="margin:8px 0;color:#666;">
-Size: ${product.size}
-</p>`
-:
-""
+`<div class="variant-size">
+Size: ${safeText(product.size)}
+</div>`
+:""
 }
 
-<div class="price">
-
-${
-Number(product.price)>0
-?
-"Rs. "+
-Number(product.price).toLocaleString()
-:
-"Price on request"
-}
-
+<div class="variant-price">
+${priceText}
 </div>
 
 ${
-Number(product.price)>0
+numericPrice>0
 ?
 `<button
 class="cart-add"
 onclick="addProductToCart(${index})">
 🛒 Add to Cart
 </button>`
-:
-""
+:""
 }
 
 `;
@@ -1272,32 +1424,26 @@ list.appendChild(div);
 
 });
 
+}
+
 modal.style.display="block";
 
 }
 
-
-/* =========================
-   CLOSE CATEGORY
-========================= */
+/* CLOSE CATEGORY */
 
 function closeCategory(){
 
-document.getElementById(
-"categoryModal"
-).style.display="none";
+document.getElementById("categoryModal")
+.style.display="none";
 
 }
 
-
-/* =========================
-   ADD TO CART
-========================= */
+/* ADD TO CART */
 
 function addProductToCart(index){
 
-const product =
-products[index];
+const product=products[index];
 
 if(!product) return;
 
@@ -1306,39 +1452,30 @@ cart.push({...product});
 updateCart();
 
 alert(
-product.name+
-(product.size
-? " - "+product.size
-: "")+
+(product.name || "Product") +
+(product.size ? " - "+product.size : "") +
 " added to cart!"
 );
 
 }
 
-
-/* =========================
-   UPDATE CART
-========================= */
+/* CART */
 
 function updateCart(){
 
-document.getElementById(
-"cartCount"
-).textContent=cart.length;
+document.getElementById("cartCount")
+.textContent=cart.length;
 
 const cartItems =
-document.getElementById(
-"cartItems"
-);
+document.getElementById("cartItems");
 
 if(cart.length===0){
 
 cartItems.innerHTML=
 "<p>Your cart is empty.</p>";
 
-document.getElementById(
-"totalBill"
-).textContent="Rs. 0";
+document.getElementById("totalBill")
+.textContent="Rs. 0";
 
 return;
 
@@ -1350,13 +1487,11 @@ let total=0;
 
 cart.forEach((product,index)=>{
 
-const price =
-Number(product.price)||0;
+const price=Number(product.price)||0;
 
 total+=price;
 
-const item =
-document.createElement("div");
+const item=document.createElement("div");
 
 item.className="cart-item";
 
@@ -1364,24 +1499,27 @@ item.innerHTML=`
 
 <span>
 
-<b>${product.name}</b>
+<b>${safeText(product.name)}</b>
 
 ${
 product.size
 ?
-"<br><small>"+product.size+"</small>"
-:
-""
+"<br><small>"+
+safeText(product.size)+
+"</small>"
+:""
 }
+
+<br>
 
 ${
 price>0
 ?
-"<br><b>Rs. "+
-price.toLocaleString()+
+"<b style='color:#d62828;'>Rs. "+
+price.toLocaleString("en-PK")+
 "</b>"
 :
-""
+"Price on request"
 }
 
 </span>
@@ -1389,9 +1527,7 @@ price.toLocaleString()+
 <button
 class="remove"
 onclick="removeFromCart(${index})">
-
 Remove
-
 </button>
 
 `;
@@ -1400,17 +1536,13 @@ cartItems.appendChild(item);
 
 });
 
-document.getElementById(
-"totalBill"
-).textContent=
-"Rs. "+total.toLocaleString();
+document.getElementById("totalBill")
+.textContent=
+"Rs. "+total.toLocaleString("en-PK");
 
 }
 
-
-/* =========================
-   REMOVE CART
-========================= */
+/* REMOVE */
 
 function removeFromCart(index){
 
@@ -1420,170 +1552,141 @@ updateCart();
 
 }
 
-
-/* =========================
-   OPEN CART
-========================= */
+/* OPEN CART */
 
 function openCart(){
 
-const box =
-document.getElementById(
-"cartBox"
-);
+const box=document.getElementById("cartBox");
 
 box.style.display =
 box.style.display==="block"
-? "none"
-: "block";
+?"none"
+:"block";
 
 }
 
-
-/* =========================
-   WHATSAPP ORDER
-========================= */
+/* WHATSAPP */
 
 function sendOrder(){
 
 if(cart.length===0){
 
 alert("Your cart is empty!");
-
 return;
 
 }
 
-const name =
-document.getElementById(
-"customerName"
-).value.trim();
+const name=
+document.getElementById("customerName")
+.value.trim();
 
-const phone =
-document.getElementById(
-"customerPhone"
-).value.trim();
+const phone=
+document.getElementById("customerPhone")
+.value.trim();
 
-let lines=[];
+let message=
+"Assalam o Alaikum, I want to order:\n\n";
 
-lines.push(
-"Assalam o Alaikum, I want to order:"
-);
+if(name){
 
-lines.push("");
+message+=
+"Customer Name: "+name+"\n";
 
-if(name)
-lines.push("Customer Name: "+name);
+}
 
-if(phone)
-lines.push("Phone: "+phone);
+if(phone){
 
-lines.push("");
+message+=
+"Phone: "+phone+"\n";
 
-lines.push("Products:");
+}
+
+message+="\nProducts:\n";
 
 let total=0;
 
 cart.forEach((product,index)=>{
 
-const price =
-Number(product.price)||0;
+const price=Number(product.price)||0;
 
 total+=price;
 
-let line =
-(index+1)+". "+product.name;
+message+=
+(index+1)+". "+
+(product.name || "Product");
 
-if(product.size)
-line+=" - "+product.size;
+if(product.size){
 
-if(price>0)
-line+=" - Rs. "+price.toLocaleString();
+message+=
+" - "+product.size;
 
-lines.push(line);
+}
+
+if(price>0){
+
+message+=
+" - Rs. "+
+price.toLocaleString("en-PK");
+
+}
+
+message+="\n";
 
 });
 
-lines.push("");
-
-lines.push(
-"Total: Rs. "+
-total.toLocaleString()
-);
-
-const message =
-encodeURIComponent(
-lines.join("\n")
-);
+message+=
+"\nTotal: Rs. "+
+total.toLocaleString("en-PK");
 
 window.open(
-"https://wa.me/923430573152?text="+message,
+"https://wa.me/923430573152?text="+
+encodeURIComponent(message),
 "_blank"
 );
 
 }
 
-
-/* =========================
-   ADMIN OPEN
-========================= */
+/* ADMIN OPEN */
 
 function openAdmin(){
 
-document.getElementById(
-"adminPanel"
-).style.display="block";
+document.getElementById("adminPanel")
+.style.display="block";
 
-document.getElementById(
-"adminLogin"
-).style.display="block";
+document.getElementById("adminLogin")
+.style.display="block";
 
-document.getElementById(
-"adminDashboard"
-).style.display="none";
+document.getElementById("adminDashboard")
+.style.display="none";
 
 }
 
-
-/* =========================
-   ADMIN CLOSE
-========================= */
+/* ADMIN CLOSE */
 
 function closeAdmin(){
 
-document.getElementById(
-"adminPanel"
-).style.display="none";
-
-cancelEdit();
+document.getElementById("adminPanel")
+.style.display="none";
 
 }
 
-
-/* =========================
-   LOGIN
-========================= */
+/* LOGIN */
 
 function loginAdmin(){
 
-const password =
-document.getElementById(
-"adminPassword"
-).value;
+const password=
+document.getElementById("adminPassword").value;
 
 if(password===ADMIN_PASSWORD){
 
-document.getElementById(
-"adminLogin"
-).style.display="none";
+document.getElementById("adminLogin")
+.style.display="none";
 
-document.getElementById(
-"adminDashboard"
-).style.display="block";
+document.getElementById("adminDashboard")
+.style.display="block";
 
-document.getElementById(
-"adminPassword"
-).value="";
+document.getElementById("adminPassword")
+.value="";
 
 renderAdminProducts();
 
@@ -1595,62 +1698,42 @@ alert("Wrong Admin Password!");
 
 }
 
-
-/* =========================
-   LOGOUT
-========================= */
+/* LOGOUT */
 
 function logoutAdmin(){
 
-document.getElementById(
-"adminDashboard"
-).style.display="none";
+document.getElementById("adminDashboard")
+.style.display="none";
 
-document.getElementById(
-"adminLogin"
-).style.display="block";
+document.getElementById("adminLogin")
+.style.display="block";
 
 cancelEdit();
 
 }
 
+/* ADD PRODUCT */
 
-/* =========================
-   ADD / EDIT PRODUCT
-========================= */
+function addProduct(){
 
-function saveProduct(){
+const category=
+document.getElementById("productCategory")
+.value.trim();
 
-const category =
-document.getElementById(
-"productCategory"
-).value.trim();
+const name=
+document.getElementById("productName")
+.value.trim();
 
-const name =
-document.getElementById(
-"productName"
-).value.trim();
+const size=
+document.getElementById("productSize")
+.value.trim();
 
-const size =
-document.getElementById(
-"productSize"
-).value.trim();
+const priceValue=
+document.getElementById("productPrice").value;
 
-const priceInput =
-document.getElementById(
-"productPrice"
-).value.trim();
+const price=Number(priceValue);
 
-const price =
-Number(priceInput);
-
-if(
-!category ||
-!name ||
-!size ||
-priceInput==="" ||
-price<0
-){
+if(!category || !name || !size || priceValue===""){
 
 alert(
 "Please fill Category, Product Name, Size and Price."
@@ -1660,264 +1743,95 @@ return;
 
 }
 
+if(!Number.isFinite(price) || price<0){
 
-/* EDIT */
+alert("Please enter a valid price.");
 
-if(editingIndex>=0){
+return;
 
-const oldImage =
-products[editingIndex].image;
-
-products[editingIndex]={
-
-category:category,
-
-name:name,
-
-size:size,
-
-price:price,
-
-image:
-selectedImage ||
-oldImage ||
-"paint.jpg"
-
-};
-
-alert("Product updated successfully!");
-
-}else{
-
-/* ADD */
+}
 
 products.push({
 
 category:category,
-
 name:name,
-
 size:size,
-
 price:price,
-
-image:
-selectedImage ||
-"paint.jpg"
+image:selectedImage || "paint.jpg"
 
 });
+
+saveProducts();
+
+renderCategories();
+renderAdminProducts();
+
+document.getElementById("productCategory").value="";
+document.getElementById("productName").value="";
+document.getElementById("productSize").value="";
+document.getElementById("productPrice").value="";
+document.getElementById("productImageFile").value="";
+
+selectedImage="";
+
+document.getElementById("imagePreview")
+.style.display="none";
 
 alert("Product added successfully!");
 
 }
 
-
-saveProductsToStorage();
-
-renderCategories();
-
-renderAdminProducts();
-
-cancelEdit();
-
-}
-
-
-/* =========================
-   EDIT PRODUCT
-========================= */
-
-function editProduct(index){
-
-const product =
-products[index];
-
-if(!product) return;
-
-editingIndex=index;
-
-document.getElementById(
-"productCategory"
-).value=product.category || "";
-
-document.getElementById(
-"productName"
-).value=product.name || "";
-
-document.getElementById(
-"productSize"
-).value=product.size || "";
-
-document.getElementById(
-"productPrice"
-).value=
-Number(product.price)||0;
-
-selectedImage="";
-
-const preview =
-document.getElementById(
-"imagePreview"
-);
-
-preview.src=
-product.image || "paint.jpg";
-
-preview.style.display="block";
-
-document.getElementById(
-"saveProductButton"
-).textContent=
-"💾 Update Product";
-
-document.getElementById(
-"cancelEditButton"
-).style.display="inline-block";
-
-document.getElementById(
-"productCategory"
-).scrollIntoView({
-behavior:"smooth",
-block:"center"
-});
-
-renderAdminProducts();
-
-}
-
-
-/* =========================
-   CANCEL EDIT
-========================= */
-
-function cancelEdit(){
-
-editingIndex=-1;
-
-selectedImage="";
-
-const fields=[
-"productCategory",
-"productName",
-"productSize",
-"productPrice"
-];
-
-fields.forEach(id=>{
-
-const element =
-document.getElementById(id);
-
-if(element)
-element.value="";
-
-});
-
-const file =
-document.getElementById(
-"productImageFile"
-);
-
-if(file)
-file.value="";
-
-const preview =
-document.getElementById(
-"imagePreview"
-);
-
-if(preview){
-
-preview.src="";
-
-preview.style.display="none";
-
-}
-
-const saveButton =
-document.getElementById(
-"saveProductButton"
-);
-
-if(saveButton)
-saveButton.textContent=
-"➕ Add Product";
-
-const cancelButton =
-document.getElementById(
-"cancelEditButton"
-);
-
-if(cancelButton)
-cancelButton.style.display="none";
-
-}
-
-
-/* =========================
-   ADMIN PRODUCTS
-========================= */
+/* ADMIN PRODUCT LIST */
 
 function renderAdminProducts(){
 
-const list =
-document.getElementById(
-"adminProductList"
-);
+const list=
+document.getElementById("adminProductList");
 
 list.innerHTML="";
 
 if(products.length===0){
 
 list.innerHTML=
-`
-<div class="empty-products">
-No products available.
-</div>
-`;
+"<p>No products available.</p>";
 
 return;
 
 }
 
+products.forEach((product,index)=>{
 
-products.forEach(
-(product,index)=>{
+const price=Number(product.price)||0;
 
-const div =
-document.createElement("div");
+const div=document.createElement("div");
 
 div.className="admin-product";
-
-if(index===editingIndex){
-
-div.classList.add("editing-box");
-
-}
 
 div.innerHTML=`
 
 <img
-src="${product.image || "paint.jpg"}"
+src="${safeText(product.image || "paint.jpg")}"
 onerror="this.src='paint.jpg'">
 
-<div class="admin-product-info">
+<div class="admin-info">
 
-<b>
-${product.category || ""}
-</b>
+<b>${safeText(product.category)}</b>
 
 <br>
 
-${product.name || ""}
+${safeText(product.name)}
 
 <br>
 
 <small>
-${product.size || ""}
-— Rs.
-${Number(product.price||0).toLocaleString()}
+${safeText(product.size)}
 </small>
+
+<br>
+
+<strong style="color:#d62828;">
+Rs. ${price.toLocaleString("en-PK")}
+</strong>
 
 </div>
 
@@ -1926,17 +1840,13 @@ ${Number(product.price||0).toLocaleString()}
 <button
 class="admin-btn edit-btn"
 onclick="editProduct(${index})">
-
 ✏️ Edit
-
 </button>
 
 <button
 class="admin-btn delete-btn"
 onclick="deleteProduct(${index})">
-
 🗑 Delete
-
 </button>
 
 </div>
@@ -1949,75 +1859,205 @@ list.appendChild(div);
 
 }
 
+/* EDIT PRODUCT */
 
-/* =========================
-   DELETE PRODUCT
-========================= */
+function editProduct(index){
 
-function deleteProduct(index){
-
-const product =
-products[index];
+const product=products[index];
 
 if(!product) return;
 
-if(
-!confirm(
-"Delete "+
-product.name+
-" - "+
-product.size+
-"?")
-){
+document.getElementById("editIndex")
+.value=index;
+
+document.getElementById("editCategory")
+.value=product.category || "";
+
+document.getElementById("editName")
+.value=product.name || "";
+
+document.getElementById("editSize")
+.value=product.size || "";
+
+document.getElementById("editPrice")
+.value=Number(product.price)||0;
+
+selectedEditImage="";
+
+document.getElementById("editImageFile")
+.value="";
+
+const preview=
+document.getElementById("editImagePreview");
+
+if(product.image){
+
+preview.src=product.image;
+preview.style.display="block";
+
+}else{
+
+preview.style.display="none";
+
+}
+
+document.getElementById("editBox")
+.style.display="block";
+
+document.getElementById("editBox")
+.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+}
+
+/* SAVE EDIT */
+
+function saveEdit(){
+
+const index=
+Number(document.getElementById("editIndex").value);
+
+if(!Number.isInteger(index) || !products[index]){
+
+alert("Product not found.");
+return;
+
+}
+
+const category=
+document.getElementById("editCategory")
+.value.trim();
+
+const name=
+document.getElementById("editName")
+.value.trim();
+
+const size=
+document.getElementById("editSize")
+.value.trim();
+
+const priceValue=
+document.getElementById("editPrice").value;
+
+const price=Number(priceValue);
+
+if(!category || !name || !size || priceValue===""){
+
+alert(
+"Please fill Category, Product Name, Size and Price."
+);
 
 return;
 
 }
 
-products.splice(index,1);
+if(!Number.isFinite(price) || price<0){
 
-if(editingIndex===index){
+alert("Please enter a valid price.");
+
+return;
+
+}
+
+products[index].category=category;
+products[index].name=name;
+products[index].size=size;
+products[index].price=price;
+
+if(selectedEditImage){
+
+products[index].image=selectedEditImage;
+
+}
+
+saveProducts();
+
+renderCategories();
+renderAdminProducts();
 
 cancelEdit();
 
-}else if(
-editingIndex>index
-){
-
-editingIndex--;
+alert("Product updated successfully!");
 
 }
 
-saveProductsToStorage();
+/* CANCEL EDIT */
+
+function cancelEdit(){
+
+document.getElementById("editBox")
+.style.display="none";
+
+document.getElementById("editIndex")
+.value="";
+
+document.getElementById("editCategory")
+.value="";
+
+document.getElementById("editName")
+.value="";
+
+document.getElementById("editSize")
+.value="";
+
+document.getElementById("editPrice")
+.value="";
+
+document.getElementById("editImageFile")
+.value="";
+
+document.getElementById("editImagePreview")
+.style.display="none";
+
+selectedEditImage="";
+
+}
+
+/* DELETE */
+
+function deleteProduct(index){
+
+const product=products[index];
+
+if(!product) return;
+
+const confirmDelete=
+confirm(
+"Delete "+(product.name || "Product")+
+" - "+(product.size || "")+
+"?");
+
+if(!confirmDelete) return;
+
+products.splice(index,1);
+
+saveProducts();
 
 renderCategories();
-
 renderAdminProducts();
+
+cancelEdit();
 
 }
 
+/* CLOSE MODALS ON OUTSIDE CLICK */
 
-/* =========================
-   ESCAPE / CLOSE MODALS
-========================= */
+document.getElementById("categoryModal")
+.addEventListener("click",function(event){
 
-document.addEventListener(
-"keydown",
-function(event){
-
-if(event.key==="Escape"){
+if(event.target===this){
 
 closeCategory();
 
 }
 
-}
-);
+});
 
+/* INITIAL */
 
-/* =========================
-   INITIAL LOAD
-========================= */
+saveProducts();
 
 renderCategories();
 
